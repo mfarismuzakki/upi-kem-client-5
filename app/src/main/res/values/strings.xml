@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">KEM 0.1</string>
+    <string name="logo_aplikasi">Logo Aplikasi</string>
+    <string name="masukkan_nisn">Masukkan NISN</string>
+    <string name="masukkan_kata_sandi">Masukkan Kata Sandi</string>
+    <string name="masuk">Masuk</string>
+    <string name="beranda">Beranda</string>
+    <string name="menu">Menu</string>
+    <string name="info">Info</string>
+    <string name="ikon_informasi">Ikon Informasi</string>
+    <string name="petunjuk">Petunjuk</string>
+    <string name="ikon_petunjuk">Ikon Petunjuk</string>
+    <string name="latihan">Latihan</string>
+    <string name="grafik">Grafik</string>
+    <string name="informasi">Informasi</string>
+</resources>
