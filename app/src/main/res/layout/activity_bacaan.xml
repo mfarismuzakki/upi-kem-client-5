@@ -5,7 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BacaanActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/putih">
+
+    <TextView
+        android:id="@+id/stopwatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/biru"
+        android:text="00:00"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"/>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -30,9 +43,8 @@
                     android:textSize="30sp"
                     android:gravity="center"
                     android:textStyle="bold"
-                    android:textColor="#000000"
+                    android:textColor="@color/biru"
                     android:text="@string/judul_teks"
-                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"/>
 
                 <TextView
@@ -54,9 +66,9 @@
             android:layout_height="50dp"
             android:text="@string/selesai_membaca"
             android:textSize="20sp"
-            android:background="@drawable/tombol_latihan"
+            android:background="@drawable/tombol_informasi"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="@color/putih"
             android:layout_gravity="bottom"
             android:layout_margin="10dp"/>
 

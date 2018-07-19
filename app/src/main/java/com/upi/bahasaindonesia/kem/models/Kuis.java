@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Kuis implements Serializable {
-    public List<Integer> arrKodeSoal = new ArrayList<>();
-    public List<String> arrTeks = new ArrayList<>();
-    public List<Integer> arrPoin = new ArrayList<>();
+    private List<Integer> arrKodeSoal = new ArrayList<>();
+    private List<String> arrTeks = new ArrayList<>();
+    private List<Integer> arrPoin = new ArrayList<>();
     private List<Integer> nomorUrut = new ArrayList<>();
 
     public void reset(){

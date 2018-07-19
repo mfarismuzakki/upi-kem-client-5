@@ -18,7 +18,7 @@ public class LatihanActivity extends AppCompatActivity {
 
         RecyclerView wadahDaftarBukuTeks = findViewById(R.id.wadah_daftar_buku_teks);
         wadahDaftarBukuTeks.setLayoutManager(new LinearLayoutManager(this));
-        wadahDaftarBukuTeks.setAdapter(new LatihanAdapter(BerandaActivity.bukuTeks, getApplicationContext()));
+        wadahDaftarBukuTeks.setAdapter(new LatihanAdapter(BerandaActivity.bukuTeks, LatihanActivity.this));
 
         ImageButton tombolKeluar = findViewById(R.id.tombol_keluar);
 

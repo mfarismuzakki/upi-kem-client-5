@@ -2,14 +2,18 @@ package com.upi.bahasaindonesia.kem.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +34,8 @@ public class LatihanAdapter extends RecyclerView.Adapter<LatihanAdapter.ViewHold
         this.context = context;
     }
 
+    private String[] warna = {"#FDBD57", "#E4716E", "#666666", "#18748A", "#18A076"};
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
@@ -43,9 +49,23 @@ public class LatihanAdapter extends RecyclerView.Adapter<LatihanAdapter.ViewHold
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, BacaanActivity.class);
-                intent.putExtra("bukuteks", bukuTeks.get(viewHolder.getAdapterPosition()));
-                context.startActivity(intent);
+                new AlertDialog.Builder(context)
+                        .setMessage("Apakah kamu sudah siap membaca?")
+                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(context, BacaanActivity.class);
+                                intent.putExtra("bukuteks", bukuTeks.get(viewHolder.getAdapterPosition()));
+                                context.startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .setCancelable(false)
+                        .show();
             }
         });
 
@@ -56,7 +76,7 @@ public class LatihanAdapter extends RecyclerView.Adapter<LatihanAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.judul.setText(bukuTeks.get(position).getJudul());
-        holder.nomor.setText("NOMOR " + Integer.toString(position + 1));
+        holder.jumlahKata.setText("Jumlah Kata: " + Integer.toString(bukuTeks.get(position).getJumlahKata()));
 
         if (position == BerandaActivity.akun.getNomorTeksBacaan() - 1) {
             holder.gembok.setVisibility(View.GONE);
@@ -68,6 +88,12 @@ public class LatihanAdapter extends RecyclerView.Adapter<LatihanAdapter.ViewHold
                 }
             });
         }
+
+        GradientDrawable gradientDrawable = new GradientDrawable();
+        gradientDrawable.setColor(Color.parseColor(warna[position % warna.length]));
+        gradientDrawable.setCornerRadius(15);
+        holder.wadah.setBackground(gradientDrawable);
+
     }
 
     @Override
@@ -78,15 +104,15 @@ public class LatihanAdapter extends RecyclerView.Adapter<LatihanAdapter.ViewHold
     class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView judul;
-        TextView nomor;
-        LinearLayout wadah;
+        TextView jumlahKata;
+        ConstraintLayout wadah;
         ImageView gembok;
 
         ViewHolder(View itemView) {
             super(itemView);
 
             judul = itemView.findViewById(R.id.buku_teks_judul);
-            nomor = itemView.findViewById(R.id.buku_teks_nomor);
+            jumlahKata = itemView.findViewById(R.id.buku_teks_jumlah_kata);
             wadah = itemView.findViewById(R.id.teks_buku_wadah);
             gembok = itemView.findViewById(R.id.buku_teks_gembok);
         }

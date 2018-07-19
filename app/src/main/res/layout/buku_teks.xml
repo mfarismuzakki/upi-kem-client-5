@@ -5,21 +5,24 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardBackgroundColor="#00000000"
-    app:cardElevation="0dp"
-    android:layout_margin="10dp">
+    app:cardElevation="0dp">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/teks_buku_wadah"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/tombol_latihan">
 
         <LinearLayout
-            android:id="@+id/teks_buku_wadah"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:minHeight="120dp"
             android:orientation="horizontal"
             android:padding="15dp"
-            android:gravity="center"
-            android:background="@drawable/tombol_latihan">
+            android:gravity="center">
 
             <ImageView
                 android:id="@+id/buku_teks_gambar"
@@ -33,15 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingEnd="24dp">
-
-                <TextView
-                    android:id="@+id/buku_teks_nomor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nomor 1"
-                    android:textColor="#ffffff"
-                    android:textAllCaps="true"/>
+                android:paddingEnd="39dp">
 
                 <TextView
                     android:id="@+id/buku_teks_judul"
@@ -50,7 +45,13 @@
                     android:text="@string/judul_teks"
                     android:textSize="25sp"
                     android:textStyle="bold"
-                    android:textAllCaps="true"
+                    android:textColor="#ffffff"/>
+
+                <TextView
+                    android:id="@+id/buku_teks_jumlah_kata"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah Kata: 100"
                     android:textColor="#ffffff"/>
 
             </LinearLayout>

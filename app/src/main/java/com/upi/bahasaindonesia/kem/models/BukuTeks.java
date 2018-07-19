@@ -6,6 +6,7 @@ public class BukuTeks implements Serializable {
     private int kode;
     private String judul;
     private String teks;
+    private int jumlahKata;
 
     public int getKode() {
         return kode;
@@ -29,5 +30,13 @@ public class BukuTeks implements Serializable {
 
     public void setTeks(String teks) {
         this.teks = teks;
+    }
+
+    public int getJumlahKata() {
+        return jumlahKata;
+    }
+
+    public void setJumlahKata(int jumlahKata) {
+        this.jumlahKata = jumlahKata;
     }
 }

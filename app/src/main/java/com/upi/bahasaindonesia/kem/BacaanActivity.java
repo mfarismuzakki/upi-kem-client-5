@@ -3,13 +3,13 @@ package com.upi.bahasaindonesia.kem;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.upi.bahasaindonesia.kem.globals.Variables;
 import com.upi.bahasaindonesia.kem.models.BukuTeks;
@@ -32,11 +32,18 @@ import java.util.List;
 
 public class BacaanActivity extends AppCompatActivity {
 
-    private int max = 0;
     private List<Integer> allQuestion = new ArrayList<>();
     public Kuis kuis = new Kuis();
     private BukuTeks bukuTeks;
     public int tampKode = 0, j = 0, k = 0, l = 0;
+
+    TextView stopwatch;
+
+    long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L;
+
+    int Seconds, Minutes;
+
+    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,7 @@ public class BacaanActivity extends AppCompatActivity {
         TextView judul = findViewById(R.id.teks_buku_judul);
         TextView teks = findViewById(R.id.teks_buku_teks);
         Button tombolSelesai = findViewById(R.id.tombol_selesai_membaca);
+        stopwatch = findViewById(R.id.stopwatch);
 
         judul.setText(bukuTeks.getJudul());
         teks.setText(bukuTeks.getTeks());
@@ -63,10 +71,17 @@ public class BacaanActivity extends AppCompatActivity {
                 Intent intent = new Intent(BacaanActivity.this, KuisActivity.class);
                 intent.putExtra("objKuis", kuis);
                 startActivity(intent);
+
+                finish();
             }
         });
 
         new GetQuestion().execute();
+
+        handler = new Handler();
+
+        StartTime = SystemClock.uptimeMillis();
+        handler.postDelayed(runnable, 0);
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -117,7 +132,6 @@ public class BacaanActivity extends AppCompatActivity {
                     bufferedReader.close();
 
                     JSONArray jsonArray = new JSONArray(stringBuilder.toString());
-                    max = jsonArray.length();
 
                     allQuestion.clear();
                     kuis.reset();
@@ -131,9 +145,6 @@ public class BacaanActivity extends AppCompatActivity {
                             kuis.setPoin(jsonObject.getInt("poin"));
                             allQuestion.add(j);
                             j++;
-                            if (i > 0){
-                                l++;
-                            }
                             k = 0;
                         }
 
@@ -145,9 +156,7 @@ public class BacaanActivity extends AppCompatActivity {
                             kuis.setPoin(jsonObject.getInt("poin"));
                             allQuestion.add(j);
                             j++;
-                            if (i > 0){
-                                l++;
-                            }
+                            l++;
                             k = 0;
                         }
 
@@ -177,10 +186,8 @@ public class BacaanActivity extends AppCompatActivity {
         protected void onPostExecute(final Boolean success) {
             super.onPostExecute(success);
 
-            Log.d("sdksdj", Integer.toString(bukuTeks.getKode()));
             Collections.shuffle(allQuestion);
             kuis.setNomor(allQuestion);
-
         }
 
         @Override
@@ -189,7 +196,29 @@ public class BacaanActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
-//    public void onBackPressed() {
-//    }
+    @Override
+    public void onBackPressed() {
+    }
+
+    public Runnable runnable = new Runnable() {
+
+        @SuppressLint({"DefaultLocale", "SetTextI18n"})
+        public void run() {
+
+            MillisecondTime = SystemClock.uptimeMillis() - StartTime;
+
+            UpdateTime = TimeBuff + MillisecondTime;
+
+            Seconds = (int) (UpdateTime / 1000);
+
+            Minutes = Seconds / 60;
+
+            Seconds = Seconds % 60;
+
+            stopwatch.setText("" + Minutes + ":" + String.format("%02d", Seconds));
+
+            handler.postDelayed(this, 0);
+        }
+
+    };
 }
