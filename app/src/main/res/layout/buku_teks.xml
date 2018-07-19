@@ -8,47 +8,72 @@
     app:cardElevation="0dp"
     android:layout_margin="10dp">
 
-    <LinearLayout
-        android:id="@+id/teks_buku_wadah"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="25dp"
-        android:background="@drawable/tombol_latihan">
+        android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/teks_buku_wadah"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
-            tools:ignore="UseCompoundDrawables">
+            android:padding="15dp"
+            android:gravity="center"
+            android:background="@drawable/tombol_latihan">
 
             <ImageView
-                android:id="@+id/buku_teks_gembok"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ikon_gembok"
-                android:contentDescription="" />
+                android:id="@+id/buku_teks_gambar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/logo_aplikasi"
+                android:contentDescription=""
+                android:layout_marginEnd="15dp"/>
 
-            <TextView
-                android:id="@+id/buku_teks_nomor"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No 1"
-                android:textColor="#000000"
-                android:textAllCaps="true"/>
+                android:orientation="vertical"
+                android:paddingEnd="24dp">
+
+                <TextView
+                    android:id="@+id/buku_teks_nomor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor 1"
+                    android:textColor="#ffffff"
+                    android:textAllCaps="true"/>
+
+                <TextView
+                    android:id="@+id/buku_teks_judul"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/judul_teks"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffff"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/buku_teks_judul"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Judul Teks"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:textColor="#000000"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/teks_buku_wadah"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/buku_teks_gembok"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription=""
+                android:src="@drawable/ikon_gembok" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>

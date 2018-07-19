@@ -31,8 +31,9 @@
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textColor="#000000"
-                    android:layout_margin="15dp"
-                    android:text="Judul"/>
+                    android:text="@string/judul_teks"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"/>
 
                 <TextView
                     android:id="@+id/teks_buku_teks"
@@ -41,7 +42,7 @@
                     android:textSize="20sp"
                     android:lineSpacingExtra="7dp"
                     android:textColor="#000000"
-                    android:text="Teks bacaan..."/>
+                    android:text="@string/teks_bacaan"/>
 
             </LinearLayout>
 
@@ -51,7 +52,7 @@
             android:id="@+id/tombol_selesai_membaca"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Selesai Membaca"
+            android:text="@string/selesai_membaca"
             android:textSize="20sp"
             android:background="@drawable/tombol_latihan"
             android:textStyle="bold"

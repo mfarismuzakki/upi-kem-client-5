@@ -67,16 +67,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kemampuan Efektif Membaca (KEM) adalah kecepatan yang dicapai oleh pembaca berdasarkan rumus banyaknya jumlah kata dibagi dengan panjangnya waktu yang diperlukan, diperbanyak dengan persentase skor yang diperoleh.\n\nBerikut adalah rumus yang digunakan untuk menghitung kecepatan tersebut."
+                android:text="@string/isi_informasi"
                 android:textSize="20sp"
                 android:textColor="#000000"
                 android:lineSpacingExtra="7dp"
                 android:layout_marginBottom="10dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/rumus_kem"
+                    android:contentDescription="" />
+
+            </HorizontalScrollView>
 
         </LinearLayout>
 

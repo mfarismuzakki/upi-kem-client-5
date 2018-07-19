@@ -1,0 +1,100 @@
+package com.upi.bahasaindonesia.kem.models;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Kuis implements Serializable {
+    public List<Integer> arrKodeSoal = new ArrayList<>();
+    public List<Integer> arrKodeBukuTeks = new ArrayList<>();
+    public List<String> arrTeks = new ArrayList<>();
+    public List<Integer> arrPoin = new ArrayList<>();
+    private List<Integer> nomorUrut = new ArrayList<>();
+
+    public void reset(){
+        arrKodeSoal.clear();
+        arrKodeBukuTeks.clear();
+        arrTeks.clear();
+        arrPoin.clear();
+        nomorUrut.clear();
+    }
+
+    public List<Integer> getNomor(){
+        return nomorUrut;
+    }
+
+    public void setNomor(List<Integer> nomorUrut){
+        this.nomorUrut = nomorUrut;
+    }
+
+    public Integer getKodeSoal(int i){
+        return arrKodeSoal.get(i);
+    }
+
+    public void setKodeSoal(int kodeSoal){
+        arrKodeSoal.add(kodeSoal);
+    }
+
+    public Integer getKodeBukuTeks(int i){
+        return arrKodeBukuTeks.get(i);
+    }
+
+    public void setKodeBukuTeks(int kodeBukuTeks){
+        arrKodeBukuTeks.add(kodeBukuTeks);
+    }
+
+    public String getTeks(int i){
+        return arrTeks.get(i);
+    }
+
+    public void setTeks(String teks){
+        arrTeks.add(teks);
+    }
+
+    public Integer getPoin(int i){
+        return arrPoin.get(i);
+    }
+
+    public void setPoin(int poin){
+        arrPoin.add(poin);
+    }
+
+
+    private Integer[][] arrChoiceKodePilihanJawaban = new Integer[100][100];
+    private Integer[][] arrChoiceKodeSoal = new Integer[100][100];
+    private String[][] arrChoiceTeks = new String[100][100];
+    private String[][] arrChoiceStatus = new String[100][100];
+
+    public Integer[] getChoiceKodePilihanJawaban(int i){
+        return arrChoiceKodePilihanJawaban[i];
+    }
+
+    public void setChoiceKodePilihanJawaban(int kode, int i, int j){
+        arrChoiceKodePilihanJawaban[i][j] = kode;
+    }
+
+    public Integer[] getChoiceKodeSoal(int i){
+        return arrChoiceKodeSoal[i];
+    }
+
+    public void setChoiceKodeSoal(int kode, int i, int j){
+        arrChoiceKodeSoal[i][j] = kode;
+    }
+
+    public String[] getChoiceTeks(int i){
+        return arrChoiceTeks[i];
+    }
+
+    public void setChoiceTeks(String teks, int i, int j){
+        arrChoiceTeks[i][j] = teks;
+    }
+
+    public String[] getChoiceStatus(int i){
+        return arrChoiceStatus[i];
+    }
+
+    public void setChoiceStatus(String status, int i, int j){
+        arrChoiceStatus[i][j] = status;
+    }
+
+}

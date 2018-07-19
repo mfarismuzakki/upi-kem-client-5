@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -30,6 +31,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MasukActivity extends AppCompatActivity {
 
@@ -55,6 +57,12 @@ public class MasukActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!masukanNisn.getText().toString().equals("") && !masukanKataSandi.getText().toString().equals("")) {
                     new ProsesMasuk().execute();
+
+                    InputMethodManager inputManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    if (inputManager != null) {
+                        inputManager.hideSoftInputFromWindow(Objects.requireNonNull(getCurrentFocus()).getWindowToken(),
+                                InputMethodManager.HIDE_NOT_ALWAYS);
+                    }
                 } else {
                     Toast.makeText(getApplicationContext(), "Harap isi semua kotak masukan", Toast.LENGTH_SHORT).show();
                 }

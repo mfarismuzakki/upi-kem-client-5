@@ -13,4 +13,8 @@
     <string name="latihan">Latihan</string>
     <string name="grafik">Grafik</string>
     <string name="informasi">Informasi</string>
+    <string name="selesai_membaca">Selesai Membaca</string>
+    <string name="teks_bacaan">Teks bacaan...</string>
+    <string name="judul_teks">Judul Teks</string>
+    <string name="isi_informasi"><b>Kemampuan Efektif Membaca (KEM)</b> merupakan ukuran kemampuan membaca seseorang. Skor KEM diperoleh dari perpaduan antara kecepatan membaca dan pemahaman bacaan seseorang.\n\nPada aplikasi ini,  terdapat teks dan soal pemahaman untuk melatih kemampuan efektif membaca kamu. Setelah kamu membaca teks dan menjawab soal pemahaman,  maka kamu akan memperoleh skor KEM. \n\nSkor KEM minimal untuk jenjang SD yaitu 100 kata per menit (kpm). Apabila skor kamu masih kurang dari 100 kpm, artinya kamu harus lebih banyak berlatih membaca.\n\n<b>Rumus KEM</b></string>
 </resources>

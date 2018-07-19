@@ -41,6 +41,7 @@
         <activity
             android:name=".BacaanActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".KuisActivity"></activity>
     </application>
 
 </manifest>

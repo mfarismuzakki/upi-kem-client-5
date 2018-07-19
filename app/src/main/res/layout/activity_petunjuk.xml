@@ -74,7 +74,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1. Klik tombol latihan pada beranda"
+                    android:text="1. Klik menu &quot;latihan&quot; pada beranda"
                     android:textSize="20sp"
                     android:textColor="#000000"
                     android:padding="20dp"
@@ -84,7 +84,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2. Klik teks secara berurutan, dimulai dari teks pertama hingga teks terakhir."
+                    android:text="2. Selanjutnya, pilih teks pertama."
                     android:textSize="20sp"
                     android:textColor="#000000"
                     android:padding="20dp"
@@ -94,7 +94,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="3. Bacalah teks yang dipilih dengan seksama."
+                    android:text="3. Bacalah teks yang dipilih dengan saksama."
                     android:textSize="20sp"
                     android:textColor="#000000"
                     android:padding="20dp"
@@ -104,7 +104,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="4. Klik “selesai” apabila sudah selesai membaca teks."
+                    android:text="4. Klik &quot;selesai&quot; apabila kamu sudah membaca teks dengan tuntas."
                     android:textSize="20sp"
                     android:textColor="#000000"
                     android:padding="20dp"
