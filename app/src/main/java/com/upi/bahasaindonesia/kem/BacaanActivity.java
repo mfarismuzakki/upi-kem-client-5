@@ -33,8 +33,6 @@ import java.util.List;
 public class BacaanActivity extends AppCompatActivity {
 
     private int max = 0;
-    private int kd_soal = 0;
-    private int count = 0;
     private List<Integer> allQuestion = new ArrayList<>();
     public Kuis kuis = new Kuis();
     private BukuTeks bukuTeks;
@@ -59,6 +57,9 @@ public class BacaanActivity extends AppCompatActivity {
         tombolSelesai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                kuis.setKodeBukuTeks(bukuTeks.getKode());
+                kuis.setWaktuBaca(200);
+
                 Intent intent = new Intent(BacaanActivity.this, KuisActivity.class);
                 intent.putExtra("objKuis", kuis);
                 startActivity(intent);
@@ -126,7 +127,6 @@ public class BacaanActivity extends AppCompatActivity {
                         if (i == 0){
                             tampKode = jsonObject.getInt("kode_soal_asal");
                             kuis.setKodeSoal(jsonObject.getInt("kode_soal_asal"));
-                            kuis.setKodeBukuTeks(jsonObject.getInt("kode_buku_teks"));
                             kuis.setTeks(jsonObject.getString("teks_soal"));
                             kuis.setPoin(jsonObject.getInt("poin"));
                             allQuestion.add(j);
@@ -181,12 +181,6 @@ public class BacaanActivity extends AppCompatActivity {
             Collections.shuffle(allQuestion);
             kuis.setNomor(allQuestion);
 
-            /*kd_soal = kuis.getKodeSoal(count);
-            Toast.makeText(getApplicationContext(), Integer.toString(bukuTeks.getKode()), Toast.LENGTH_LONG);
-            Log.d("sdksdj", Integer.toString(bukuTeks.getKode()));
-            Log.d("one", Integer.toString(allQuestion.get(0)));
-            Log.d("two", Integer.toString(kuis.getNomor().get(0)));
-            new GetChoice().execute();*/
         }
 
         @Override

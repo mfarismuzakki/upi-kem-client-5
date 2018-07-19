@@ -6,14 +6,12 @@ import java.util.List;
 
 public class Kuis implements Serializable {
     public List<Integer> arrKodeSoal = new ArrayList<>();
-    public List<Integer> arrKodeBukuTeks = new ArrayList<>();
     public List<String> arrTeks = new ArrayList<>();
     public List<Integer> arrPoin = new ArrayList<>();
     private List<Integer> nomorUrut = new ArrayList<>();
 
     public void reset(){
         arrKodeSoal.clear();
-        arrKodeBukuTeks.clear();
         arrTeks.clear();
         arrPoin.clear();
         nomorUrut.clear();
@@ -33,14 +31,6 @@ public class Kuis implements Serializable {
 
     public void setKodeSoal(int kodeSoal){
         arrKodeSoal.add(kodeSoal);
-    }
-
-    public Integer getKodeBukuTeks(int i){
-        return arrKodeBukuTeks.get(i);
-    }
-
-    public void setKodeBukuTeks(int kodeBukuTeks){
-        arrKodeBukuTeks.add(kodeBukuTeks);
     }
 
     public String getTeks(int i){
@@ -95,6 +85,35 @@ public class Kuis implements Serializable {
 
     public void setChoiceStatus(String status, int i, int j){
         arrChoiceStatus[i][j] = status;
+    }
+
+
+    private int kode_buku_teks;
+    private int waktu_baca;
+    public List<Integer> kode_pilihan_jawaban = new ArrayList<>();
+
+    public Integer getKodeBukuTeks(){
+        return kode_buku_teks;
+    }
+
+    public void setKodeBukuTeks(Integer kode_buku_teks){
+        this.kode_buku_teks = kode_buku_teks;
+    }
+
+    public Integer getWaktuBaca(){
+        return waktu_baca;
+    }
+
+    public void setWaktuBaca(Integer waktu_baca){
+        this.waktu_baca = waktu_baca;
+    }
+
+    public List<Integer> getKodePilihanJawaban(){
+        return kode_pilihan_jawaban;
+    }
+
+    public void setKodePilihanJawaban(Integer kode_pilihan){
+        kode_pilihan_jawaban.add(kode_pilihan);
     }
 
 }
