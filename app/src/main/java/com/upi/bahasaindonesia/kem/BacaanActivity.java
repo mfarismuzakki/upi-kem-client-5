@@ -68,7 +68,7 @@ public class BacaanActivity extends AppCompatActivity {
                 kuis.setKodeBukuTeks(bukuTeks.getKode());
                 kuis.setWaktuBaca(200);
 
-                Intent intent = new Intent(BacaanActivity.this, KuisActivity.class);
+                Intent intent = new Intent(BacaanActivity.this, SoalLatihanActivity.class);
                 intent.putExtra("objKuis", kuis);
                 startActivity(intent);
 

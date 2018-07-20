@@ -40,7 +40,7 @@
             android:name=".PetunjukActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LatihanActivity"
+            android:name=".DaftarLatihanActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".GrafikActivity"
@@ -49,7 +49,7 @@
             android:name=".BacaanActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".KuisActivity"
+            android:name=".SoalLatihanActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HasilKuisActivity"

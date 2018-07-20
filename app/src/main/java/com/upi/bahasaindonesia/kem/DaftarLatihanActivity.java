@@ -9,16 +9,16 @@ import android.widget.ImageButton;
 
 import com.upi.bahasaindonesia.kem.adapters.LatihanAdapter;
 
-public class LatihanActivity extends AppCompatActivity {
+public class DaftarLatihanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_latihan);
+        setContentView(R.layout.activity_daftar_latihan);
 
         RecyclerView wadahDaftarBukuTeks = findViewById(R.id.wadah_daftar_buku_teks);
         wadahDaftarBukuTeks.setLayoutManager(new LinearLayoutManager(this));
-        wadahDaftarBukuTeks.setAdapter(new LatihanAdapter(BerandaActivity.bukuTeks, LatihanActivity.this));
+        wadahDaftarBukuTeks.setAdapter(new LatihanAdapter(BerandaActivity.bukuTeks, DaftarLatihanActivity.this));
 
         ImageButton tombolKeluar = findViewById(R.id.tombol_keluar);
 

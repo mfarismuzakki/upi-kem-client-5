@@ -1,10 +1,8 @@
 package com.upi.bahasaindonesia.kem;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,10 +18,8 @@ import com.upi.bahasaindonesia.kem.models.Kuis;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -33,9 +29,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class KuisActivity extends AppCompatActivity {
+public class SoalLatihanActivity extends AppCompatActivity {
 
-    Button next;
+    Button tombolGantiSoal;
     TextView soal;
     private Kuis kuis = new Kuis();
     String mJawaban;
@@ -59,7 +55,7 @@ public class KuisActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kuis);
+        setContentView(R.layout.activity_soal_latihan);
 
         r = new Random();
 
@@ -68,7 +64,7 @@ public class KuisActivity extends AppCompatActivity {
         rb2 = findViewById(R.id.radioButton2);
         rb3 = findViewById(R.id.radioButton3);
         rb4 = findViewById(R.id.radioButton4);
-        next = findViewById(R.id.next);
+        tombolGantiSoal = findViewById(R.id.next);
         soal = findViewById(R.id.soal);
 
         Intent i = getIntent();
@@ -79,7 +75,7 @@ public class KuisActivity extends AppCompatActivity {
 
         updateSoal();
 
-        next.setOnClickListener(new View.OnClickListener() {
+        tombolGantiSoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 kuis.setKodePilihanJawaban(kode_pilihan_jawaban);
@@ -89,29 +85,30 @@ public class KuisActivity extends AppCompatActivity {
                 }
 
                 if (num < max) {
+                    rg.clearCheck();
                     updateSoal();
                 } else {
                     kuis.setSoalBenar(benar);
                     new ProsesInputHasil().execute();
-                    /*startActivity(new Intent(KuisActivity.this, HasilKuisActivity.class));*/
                 }
             }
         });
     }
 
-    public void rbclick (View v){
+    public void rbclick (View v) {
         int radioButton = rg.getCheckedRadioButtonId();
         rb = findViewById(radioButton);
         Jaw = rb.getText().toString();
-        for (int i = 0; i < 4; i++){
-            if(Jaw.equals(pilihan[i])){
+        for (int i = 0; i < 4; i++) {
+            if (Jaw.equals(pilihan[i])) {
                 kode_pilihan_jawaban = kode[i];
             }
         }
     }
 
-    private void updateSoal(){
-        soal.setText(kuis.getTeks(nomorUrut.get(num)));
+    @SuppressLint("SetTextI18n")
+    private void updateSoal() {
+        soal.setText(Integer.toString(num + 1) + ". " + kuis.getTeks(nomorUrut.get(num)));
 
         nilai = kuis.getPoin(nomorUrut.get(num));
         allChoice.clear();
@@ -122,51 +119,23 @@ public class KuisActivity extends AppCompatActivity {
 
         for (int i = 0; i < 4; i++){
             allChoice.add(pilihan[i]);
-            if (jawaban[i].equals("benar")){
+            if (jawaban[i].equals("benar")) {
                 benar = pilihan[i];
             }
         }
         Collections.shuffle(allChoice);
 
-        Log.d("jawaban", benar);
-
-        rb1.setText(allChoice.get(0));
-        rb2.setText(allChoice.get(1));
-        rb3.setText(allChoice.get(2));
-        rb4.setText(allChoice.get(3));
+        rb1.setText("a. " + allChoice.get(0));
+        rb2.setText("b. " + allChoice.get(1));
+        rb3.setText("c. " + allChoice.get(2));
+        rb4.setText("d. " + allChoice.get(3));
 
         mJawaban = benar;
         num++;
     }
 
-    private void GameOver(){
-        AlertDialog.Builder alert = new AlertDialog.Builder(KuisActivity.this);
-        alert
-                .setMessage("Nilai Adalah " + mNilai + ".")
-                .setCancelable(false)
-                .setPositiveButton("Lihat Jawaban",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
-                                startActivity(new Intent(getApplicationContext(), BacaanActivity.class));
-                            }
-                        })
-                .setNegativeButton("Kembali",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
-                            }
-                        });
-        AlertDialog alertDialog = alert.create();
-        alertDialog.show();
-    }
-
     @SuppressLint("StaticFieldLeak")
     private class ProsesInputHasil extends AsyncTask<Void, Void, Boolean> {
-
-        private String pesan = "";
 
         @Override
         protected void onPreExecute() {
@@ -227,38 +196,6 @@ public class KuisActivity extends AppCompatActivity {
             }
 
             try {
-                int HttpResponse = httpURLConnection.getResponseCode();
-
-                if (HttpResponse == HttpURLConnection.HTTP_OK) {
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"));
-                    String line;
-                    StringBuilder stringBuilder = new StringBuilder("");
-
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line).append("\n");
-                    }
-                    bufferedReader.close();
-
-                    JSONObject jsonObject = new JSONObject(stringBuilder.toString());
-                    pesan = jsonObject.getString("pesan");
-
-                    /*if (pesan.equals("OK")) {
-                        akun = new Akun();
-                        akun.setKode(jsonObject.getInt("kode_akun"));
-                        akun.setNisn(jsonObject.getString("nisn"));
-                        akun.setKataSandi(jsonObject.getString("kata_sandi"));
-                        akun.setNamaLengkap(jsonObject.getString("nama_lengkap"));
-                        akun.setSekolah(jsonObject.getString("sekolah"));
-                        akun.setKelas(jsonObject.getInt("kelas"));
-                        akun.setNomorTeksBacaan(jsonObject.getInt("nomor_buku_teks"));
-                    }*/
-                }
-
-            } catch (IOException | JSONException e) {
-                e.printStackTrace();
-            }
-
-            try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
@@ -271,32 +208,11 @@ public class KuisActivity extends AppCompatActivity {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
 
-            Intent intent = new Intent(KuisActivity.this, HasilKuisActivity.class);
+            Intent intent = new Intent(SoalLatihanActivity.this, HasilKuisActivity.class);
             intent.putExtra("objKuis", kuis);
             startActivity(intent);
 
             finish();
-
-            /*if (pesan.equals("OK")) {
-                Intent intent = new Intent(getApplicationContext(), BerandaActivity.class);
-                intent.putExtra("akun", akun);
-                intent.putExtra("bukuteks", bukuTeksArrayList);
-                startActivity(intent);
-
-                finish();
-            } else {
-                new AlertDialog.Builder(MasukActivity.this)
-                        .setTitle("Gagal masuk!")
-                        .setMessage("Pastikan masukan kamu benar.")
-                        .setNegativeButton("Coba lagi", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                bilahKemajuan.setVisibility(View.GONE);
-                            }
-                        })
-                        .setCancelable(false)
-                        .show();
-            }*/
         }
     }
 }
