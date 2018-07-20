@@ -11,15 +11,19 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.upi.bahasaindonesia.kem.globals.Variables;
+import com.upi.bahasaindonesia.kem.models.Akun;
 import com.upi.bahasaindonesia.kem.models.Kuis;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -34,14 +38,14 @@ public class SoalLatihanActivity extends AppCompatActivity {
     Button tombolGantiSoal;
     TextView soal;
     private Kuis kuis = new Kuis();
-    String mJawaban;
+    String mJawaban = "";
     private int mNilai = 0;
     private int nilai_max = 0;
     public List<String> allChoice = new ArrayList<>();
     public List<Integer> nomorUrut = new ArrayList<>();
     RadioGroup rg;
     RadioButton rb, rb1, rb2, rb3, rb4;
-    String Jaw;
+    String Jaw = "";
     Random r;
     int num = 0;
     int max = 0;
@@ -81,7 +85,8 @@ public class SoalLatihanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 kuis.setKodePilihanJawaban(kode_pilihan_jawaban);
                 nilai_max = nilai_max + nilai;
-                if (Jaw.equals(mJawaban)) {
+                String sub_jawaban = Jaw.substring(3, Jaw.length());
+                if (sub_jawaban.equals(mJawaban)) {
                     mNilai = mNilai + nilai;
                     benar++;
                 }
@@ -104,8 +109,9 @@ public class SoalLatihanActivity extends AppCompatActivity {
         int radioButton = rg.getCheckedRadioButtonId();
         rb = findViewById(radioButton);
         Jaw = rb.getText().toString();
+        String sub_jawaban = Jaw.substring(3, Jaw.length());
         for (int i = 0; i < 4; i++) {
-            if (Jaw.equals(pilihan[i])) {
+            if (sub_jawaban.equals(pilihan[i])) {
                 kode_pilihan_jawaban = kode[i];
             }
         }
@@ -113,11 +119,12 @@ public class SoalLatihanActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void updateSoal() {
-        soal.setText(Integer.toString(num + 1) + ". " + kuis.getTeks(nomorUrut.get(num)));
+        int nomor = num;
+        soal.setText(Integer.toString(nomor + 1) + ". " + kuis.getTeks(nomorUrut.get(num)));
 
         nilai = kuis.getPoin(nomorUrut.get(num));
         allChoice.clear();
-        String benar = "";
+        String kunjaw = "";
         pilihan = kuis.getChoiceTeks(nomorUrut.get(num));
         jawaban = kuis.getChoiceStatus(nomorUrut.get(num));
         kode = kuis.getChoiceKodePilihanJawaban(nomorUrut.get(num));
@@ -125,7 +132,7 @@ public class SoalLatihanActivity extends AppCompatActivity {
         for (int i = 0; i < 4; i++){
             allChoice.add(pilihan[i]);
             if (jawaban[i].equals("benar")) {
-                benar = pilihan[i];
+                kunjaw = pilihan[i];
             }
         }
         Collections.shuffle(allChoice);
@@ -135,12 +142,14 @@ public class SoalLatihanActivity extends AppCompatActivity {
         rb3.setText("c. " + allChoice.get(2));
         rb4.setText("d. " + allChoice.get(3));
 
-        mJawaban = benar;
+        mJawaban = kunjaw;
         num++;
     }
 
     @SuppressLint("StaticFieldLeak")
     private class ProsesInputHasil extends AsyncTask<Void, Void, Boolean> {
+
+        private String pesan = "";
 
         @Override
         protected void onPreExecute() {
@@ -196,6 +205,27 @@ public class SoalLatihanActivity extends AppCompatActivity {
                 dataOutputStream.writeBytes(jsonObject.toString());
                 dataOutputStream.flush();
                 dataOutputStream.close();
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                int HttpResponse = httpURLConnection.getResponseCode();
+
+                if (HttpResponse == HttpURLConnection.HTTP_OK) {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"));
+                    String line;
+                    StringBuilder stringBuilder = new StringBuilder("");
+
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+
+                    JSONObject jsonObject = new JSONObject(stringBuilder.toString());
+                    pesan = jsonObject.getString("pesan");
+                }
+
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
