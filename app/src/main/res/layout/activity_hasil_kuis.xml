@@ -93,8 +93,7 @@
                 android:stepSize="1"
                 android:rating="5"
                 android:transformPivotX="0dp"
-                android:transformPivotY="10dp"
-                />
+                android:transformPivotY="10dp" />
 
             <TextView
                 android:layout_width="match_parent"

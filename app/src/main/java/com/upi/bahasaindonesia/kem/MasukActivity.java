@@ -220,6 +220,10 @@ public class MasukActivity extends AppCompatActivity {
                         bukuTeks.setKode(jsonObject.getInt("kode_buku_teks"));
                         bukuTeks.setJudul(jsonObject.getString("judul"));
                         bukuTeks.setTeks(jsonObject.getString("teks"));
+
+                        String trimmed = bukuTeks.getTeks().trim();
+                        bukuTeks.setJumlahKata(trimmed.isEmpty() ? 0 : trimmed.split("\\s+").length);
+
                         bukuTeksArrayList.add(bukuTeks);
                     }
                 }
