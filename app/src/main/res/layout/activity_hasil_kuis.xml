@@ -32,6 +32,7 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/waktu_baca"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
@@ -73,6 +74,7 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/skor_kpm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -96,6 +98,7 @@
                 android:transformPivotY="10dp" />
 
             <TextView
+                android:id="@+id/pesan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

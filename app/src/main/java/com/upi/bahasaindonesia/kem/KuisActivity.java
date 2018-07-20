@@ -40,6 +40,7 @@ public class KuisActivity extends AppCompatActivity {
     private Kuis kuis = new Kuis();
     String mJawaban;
     private int mNilai = 0;
+    private int nilai_max = 0;
     public List<String> allChoice = new ArrayList<>();
     public List<Integer> nomorUrut = new ArrayList<>();
     RadioGroup rg;
@@ -83,6 +84,7 @@ public class KuisActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 kuis.setKodePilihanJawaban(kode_pilihan_jawaban);
+                nilai_max = nilai_max + nilai;
                 if (Jaw.equals(mJawaban)) {
                     mNilai = mNilai + nilai;
                     benar++;
@@ -91,7 +93,10 @@ public class KuisActivity extends AppCompatActivity {
                 if (num < max) {
                     updateSoal();
                 } else {
+                    kuis.setPoinDidapat(mNilai);
+                    kuis.setPoinMax(nilai_max);
                     kuis.setSoalBenar(benar);
+                    
                     new ProsesInputHasil().execute();
                     /*startActivity(new Intent(KuisActivity.this, HasilKuisActivity.class));*/
                 }

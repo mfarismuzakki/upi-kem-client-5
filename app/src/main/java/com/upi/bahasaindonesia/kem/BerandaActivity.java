@@ -71,9 +71,6 @@ public class BerandaActivity extends AppCompatActivity
             }
         });
 
-        /*nama = findViewById(R.id.nama);
-        nama.setText(akun.getNamaLengkap());*/
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
