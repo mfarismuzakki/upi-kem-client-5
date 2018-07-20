@@ -10,18 +10,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.upi.bahasaindonesia.kem.globals.Variables;
-import com.upi.bahasaindonesia.kem.models.Akun;
-import com.upi.bahasaindonesia.kem.models.BukuTeks;
 import com.upi.bahasaindonesia.kem.models.Kuis;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
