@@ -35,13 +35,14 @@ public class BacaanActivity extends AppCompatActivity {
     private List<Integer> allQuestion = new ArrayList<>();
     public Kuis kuis = new Kuis();
     private BukuTeks bukuTeks;
-    public int tampKode = 0, j = 0, k = 0, l = 0;
+    public int tampKode = 0, j = 0, k = 0, l = 0, status = 0;
 
     TextView stopwatch;
 
     long MillisecondTime, StartTime, TimeBuff, UpdateTime = 0L;
 
     int Seconds, Minutes;
+    int waktu = 0;
 
     Handler handler;
 
@@ -62,17 +63,22 @@ public class BacaanActivity extends AppCompatActivity {
         judul.setText(bukuTeks.getJudul());
         teks.setText(bukuTeks.getTeks());
 
+        String trimmed = bukuTeks.getTeks().trim();
+        kuis.setJumlahKata(trimmed.isEmpty() ? 0 : trimmed.split("\\s+").length);
+
         tombolSelesai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                kuis.setKodeBukuTeks(bukuTeks.getKode());
-                kuis.setWaktuBaca(200);
+                if (status == 1) {
+                    kuis.setKodeBukuTeks(bukuTeks.getKode());
+                    kuis.setWaktuBaca(waktu);
 
                 Intent intent = new Intent(BacaanActivity.this, SoalLatihanActivity.class);
                 intent.putExtra("objKuis", kuis);
                 startActivity(intent);
 
-                finish();
+                    finish();
+                }
             }
         });
 
@@ -186,6 +192,7 @@ public class BacaanActivity extends AppCompatActivity {
         protected void onPostExecute(final Boolean success) {
             super.onPostExecute(success);
 
+            status = 1;
             Collections.shuffle(allQuestion);
             kuis.setNomor(allQuestion);
         }
@@ -210,6 +217,8 @@ public class BacaanActivity extends AppCompatActivity {
             UpdateTime = TimeBuff + MillisecondTime;
 
             Seconds = (int) (UpdateTime / 1000);
+
+            waktu = (int) (UpdateTime / 1000);
 
             Minutes = Seconds / 60;
 

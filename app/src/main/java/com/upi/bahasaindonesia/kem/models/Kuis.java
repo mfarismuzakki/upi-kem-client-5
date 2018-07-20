@@ -91,6 +91,9 @@ public class Kuis implements Serializable {
     private int kode_buku_teks;
     private int waktu_baca;
     private int soal_benar;
+    private int poin_max;
+    private int poin_didapat;
+    private int jumlahKata;
     public List<Integer> kode_pilihan_jawaban = new ArrayList<>();
 
     public Integer getKodeBukuTeks(){
@@ -123,6 +126,30 @@ public class Kuis implements Serializable {
 
     public void setKodePilihanJawaban(Integer kode_pilihan){
         kode_pilihan_jawaban.add(kode_pilihan);
+    }
+
+    public int getJumlahKata() {
+        return jumlahKata;
+    }
+
+    public void setJumlahKata(int jumlahKata) {
+        this.jumlahKata = jumlahKata;
+    }
+
+    public int getPoinMax() {
+        return poin_max;
+    }
+
+    public void setPoinMax(int poin_max) {
+        this.poin_max = poin_max;
+    }
+
+    public int getPoinDidapat() {
+        return poin_didapat;
+    }
+
+    public void setPoinDidapat(int poin_didapat) {
+        this.poin_didapat = poin_didapat;
     }
 
 }
