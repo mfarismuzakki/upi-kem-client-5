@@ -4,8 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BerandaActivity"
-    android:background="@color/putih">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.upi.bahasaindonesia.kem.BerandaActivity"
+    tools:showIn="@layout/app_bar_drawer_navigation">
+
+    <!--<include
+        layout="@layout/activity_beranda"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
