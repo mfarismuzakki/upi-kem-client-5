@@ -280,6 +280,8 @@ public class KuisActivity extends AppCompatActivity {
             intent.putExtra("objKuis", kuis);
             startActivity(intent);
 
+            finish();
+
             /*if (pesan.equals("OK")) {
                 Intent intent = new Intent(getApplicationContext(), BerandaActivity.class);
                 intent.putExtra("akun", akun);
