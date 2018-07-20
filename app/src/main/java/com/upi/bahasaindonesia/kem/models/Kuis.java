@@ -90,6 +90,7 @@ public class Kuis implements Serializable {
 
     private int kode_buku_teks;
     private int waktu_baca;
+    private int soal_benar;
     public List<Integer> kode_pilihan_jawaban = new ArrayList<>();
 
     public Integer getKodeBukuTeks(){
@@ -106,6 +107,14 @@ public class Kuis implements Serializable {
 
     public void setWaktuBaca(Integer waktu_baca){
         this.waktu_baca = waktu_baca;
+    }
+
+    public Integer getSoalBenar(){
+        return soal_benar;
+    }
+
+    public void setSoalBenar(Integer soal_benar){
+        this.soal_benar = soal_benar;
     }
 
     public List<Integer> getKodePilihanJawaban(){

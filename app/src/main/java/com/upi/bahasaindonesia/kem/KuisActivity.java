@@ -58,6 +58,7 @@ public class KuisActivity extends AppCompatActivity {
     String[] pilihan;
     String[] jawaban;
     Integer[] kode;
+    int benar = 0;
 
 
     @Override
@@ -89,13 +90,15 @@ public class KuisActivity extends AppCompatActivity {
                 kuis.setKodePilihanJawaban(kode_pilihan_jawaban);
                 if (Jaw.equals(mJawaban)) {
                     mNilai = mNilai + nilai;
+                    benar++;
                 }
 
                 if (num < max) {
                     updateSoal();
                 } else {
-
-                    startActivity(new Intent(KuisActivity.this, HasilKuisActivity.class));
+                    kuis.setSoalBenar(benar);
+                    new ProsesInputHasil().execute();
+                    /*startActivity(new Intent(KuisActivity.this, HasilKuisActivity.class));*/
                 }
             }
         });
@@ -165,8 +168,10 @@ public class KuisActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    /*@SuppressLint("StaticFieldLeak")
+    @SuppressLint("StaticFieldLeak")
     private class ProsesInputHasil extends AsyncTask<Void, Void, Boolean> {
+
+        private String pesan = "";
 
         @Override
         protected void onPreExecute() {
@@ -178,7 +183,7 @@ public class KuisActivity extends AppCompatActivity {
             URL url = null;
 
             try {
-                url = new URL(Variables.API + "Akun/login");
+                url = new URL(Variables.API + "Kuis/update");
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -207,8 +212,16 @@ public class KuisActivity extends AppCompatActivity {
             try {
                 httpURLConnection.connect();
                 JSONObject jsonObject = new JSONObject();
-                jsonObject.put("nisn", masukanNisn.getText().toString());
-                jsonObject.put("kata_sandi", masukanKataSandi.getText().toString());
+                jsonObject.put("kode_akun", BerandaActivity.akun.getKode());
+                jsonObject.put("kode_buku_teks", kuis.getKodeBukuTeks());
+                jsonObject.put("waktu_baca", kuis.getWaktuBaca());
+
+                int banyak = kuis.getKodePilihanJawaban().size();
+                jsonObject.put("banyak", banyak);
+
+                for (int i = 0; i < kuis.getKodePilihanJawaban().size(); i++){
+                    jsonObject.put("kode_pilihan_jawaban_" + i, kuis.getKodePilihanJawaban().get(i));
+                }
 
                 DataOutputStream dataOutputStream = new DataOutputStream(httpURLConnection.getOutputStream());
                 dataOutputStream.writeBytes(jsonObject.toString());
@@ -234,7 +247,7 @@ public class KuisActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(stringBuilder.toString());
                     pesan = jsonObject.getString("pesan");
 
-                    if (pesan.equals("OK")) {
+                    /*if (pesan.equals("OK")) {
                         akun = new Akun();
                         akun.setKode(jsonObject.getInt("kode_akun"));
                         akun.setNisn(jsonObject.getString("nisn"));
@@ -243,7 +256,7 @@ public class KuisActivity extends AppCompatActivity {
                         akun.setSekolah(jsonObject.getString("sekolah"));
                         akun.setKelas(jsonObject.getInt("kelas"));
                         akun.setNomorTeksBacaan(jsonObject.getInt("nomor_buku_teks"));
-                    }
+                    }*/
                 }
 
             } catch (IOException | JSONException e) {
@@ -263,7 +276,11 @@ public class KuisActivity extends AppCompatActivity {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
 
-            if (pesan.equals("OK")) {
+            Intent intent = new Intent(KuisActivity.this, HasilKuisActivity.class);
+            intent.putExtra("objKuis", kuis);
+            startActivity(intent);
+
+            /*if (pesan.equals("OK")) {
                 Intent intent = new Intent(getApplicationContext(), BerandaActivity.class);
                 intent.putExtra("akun", akun);
                 intent.putExtra("bukuteks", bukuTeksArrayList);
@@ -282,7 +299,7 @@ public class KuisActivity extends AppCompatActivity {
                         })
                         .setCancelable(false)
                         .show();
-            }
+            }*/
         }
-    }*/
+    }
 }
