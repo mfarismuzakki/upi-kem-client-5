@@ -18,11 +18,9 @@ import com.upi.bahasaindonesia.kem.models.Kuis;
 public class HasilKuisActivity extends AppCompatActivity {
 
     private Kuis kuis = new Kuis();
-    private BukuTeks bukuTeks, bukuTeks_next;
+    private BukuTeks bukuTeks;
     TextView jumlah_soal_benar, waktu_baca, skor_kpm, pesan;
     RatingBar rating;
-    Button next, beranda;
-    private Context context;
     Button kembaliLatihan, kembaliBeranda;
 
     @SuppressLint("SetTextI18n")
@@ -101,44 +99,5 @@ public class HasilKuisActivity extends AppCompatActivity {
             }
         });
 
-        /*int status = 0;
-        int count = 0;
-        while (status == 0 && count < BerandaActivity.bukuTeks.size()){
-
-            if (BerandaActivity.bukuTeks.get(count).getKode() == bukuTeks.getKode()){
-                bukuTeks_next = BerandaActivity.bukuTeks.get(count++);
-                status = 1;
-            }
-
-            count++;
-        }*/
-
-        /*next = findViewById(R.id.next);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(HasilKuisActivity.this);
-                alert
-                        .setMessage("Apakah kamu sudah siap membaca?")
-                        .setCancelable(false)
-                        .setPositiveButton("Ya",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Intent intent = new Intent(getApplicationContext(), BacaanActivity.class);
-                                        intent.putExtra("bukuteks", bukuTeks_next);
-                                        startActivity(intent);
-                                    }
-                                })
-                        .setNegativeButton("Tidak",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                    }
-                                });
-                AlertDialog alertDialog = alert.create();
-                alertDialog.show();
-            }
-        });*/
     }
 }

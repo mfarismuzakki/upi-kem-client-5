@@ -32,7 +32,7 @@ import java.net.URL;
  */
 public class ProfilFragment extends Fragment {
 
-    TextView restart;
+    TextView restart, nama, sekolah, kelas;
 
     public ProfilFragment() {
         // Required empty public constructor
@@ -54,6 +54,15 @@ public class ProfilFragment extends Fragment {
                 }
             });
         }
+
+        nama = v.findViewById(R.id.nama_lengkap);
+        nama.setText(BerandaActivity.akun.getNamaLengkap());
+
+        sekolah = v.findViewById(R.id.sekolah);
+        sekolah.setText(BerandaActivity.akun.getSekolah());
+
+        kelas = v.findViewById(R.id.kelas);
+        kelas.setText(Integer.toString(BerandaActivity.akun.getKelas()));
 
         return v;
     }

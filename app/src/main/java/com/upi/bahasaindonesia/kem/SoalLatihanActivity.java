@@ -99,13 +99,6 @@ public class SoalLatihanActivity extends AppCompatActivity {
                     kuis.setPoinDidapat(mNilai);
                     kuis.setPoinMax(nilai_max);
                     kuis.setSoalBenar(benar);
-
-                    /*Intent intent = new Intent(SoalLatihanActivity.this, HasilKuisActivity.class);
-                    intent.putExtra("objKuis", kuis);
-                    intent.putExtra("bukuteks", bukuTeks);
-                    startActivity(intent);
-
-                    finish();*/
                     
                     new ProsesInputHasil().execute();
                 }

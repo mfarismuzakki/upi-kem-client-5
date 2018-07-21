@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.upi.bahasaindonesia.kem.models.Akun;
@@ -51,7 +52,11 @@ public class BerandaActivity extends AppCompatActivity
         fragmentTransaction.commit();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);
+
+        TextView username = headerView.findViewById(R.id.nama_profil);
+        username.setText(akun.getNamaLengkap());
     }
 
     @Override
@@ -78,11 +83,6 @@ public class BerandaActivity extends AppCompatActivity
                 })
                 .setCancelable(false)
                 .show();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
