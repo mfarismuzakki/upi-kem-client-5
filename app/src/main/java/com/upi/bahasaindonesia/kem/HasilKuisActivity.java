@@ -69,7 +69,7 @@ public class HasilKuisActivity extends AppCompatActivity {
         kembaliLatihan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BerandaActivity.akun.setNomorTeksBacaan((BerandaActivity.akun.getNomorTeksBacaan() + 1) % BerandaActivity.bukuTeks.size());
+                BerandaActivity.akun.setNomorTeksBacaan((BerandaActivity.akun.getNomorTeksBacaan() + 1));
 
                 startActivity(new Intent(getApplicationContext(), DaftarLatihanActivity.class));
 
