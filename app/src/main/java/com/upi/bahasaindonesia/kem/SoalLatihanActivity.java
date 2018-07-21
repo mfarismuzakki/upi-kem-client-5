@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.upi.bahasaindonesia.kem.globals.Variables;
 import com.upi.bahasaindonesia.kem.models.Akun;
+import com.upi.bahasaindonesia.kem.models.BukuTeks;
 import com.upi.bahasaindonesia.kem.models.Kuis;
 
 import org.json.JSONException;
@@ -38,6 +39,7 @@ public class SoalLatihanActivity extends AppCompatActivity {
     Button tombolGantiSoal;
     TextView soal;
     private Kuis kuis = new Kuis();
+    private BukuTeks bukuTeks;
     String mJawaban = "";
     private int mNilai = 0;
     private int nilai_max = 0;
@@ -74,6 +76,7 @@ public class SoalLatihanActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         kuis = (Kuis)i.getSerializableExtra("objKuis");
+        bukuTeks = (BukuTeks) i.getSerializableExtra("bukuteks");
 
         nomorUrut = kuis.getNomor();
         max = nomorUrut.size();
@@ -98,6 +101,13 @@ public class SoalLatihanActivity extends AppCompatActivity {
                     kuis.setPoinDidapat(mNilai);
                     kuis.setPoinMax(nilai_max);
                     kuis.setSoalBenar(benar);
+
+                    /*Intent intent = new Intent(SoalLatihanActivity.this, HasilKuisActivity.class);
+                    intent.putExtra("objKuis", kuis);
+                    intent.putExtra("bukuteks", bukuTeks);
+                    startActivity(intent);
+
+                    finish();*/
                     
                     new ProsesInputHasil().execute();
                 }

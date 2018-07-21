@@ -1,6 +1,9 @@
 package com.upi.bahasaindonesia.kem;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,9 +19,11 @@ import com.upi.bahasaindonesia.kem.models.Kuis;
 public class HasilKuisActivity extends AppCompatActivity {
 
     private Kuis kuis = new Kuis();
+    private BukuTeks bukuTeks, bukuTeks_next;
     TextView jumlah_soal_benar, waktu_baca, skor_kpm, pesan;
     RatingBar rating;
     Button next, beranda;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,7 @@ public class HasilKuisActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         kuis = (Kuis)i.getSerializableExtra("objKuis");
+        bukuTeks = (BukuTeks) i.getSerializableExtra("bukuteks");
 
         waktu_baca = findViewById(R.id.waktu_baca);
         waktu_baca.setText(": " + kuis.getWaktuBaca() + " detik");
@@ -71,8 +77,53 @@ public class HasilKuisActivity extends AppCompatActivity {
         beranda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HasilKuisActivity.this, BerandaActivity.class));
+                Intent intent = new Intent(HasilKuisActivity.this, BerandaActivity.class);
+                intent.putExtra("akun", BerandaActivity.akun);
+                intent.putExtra("bukuteks", BerandaActivity.bukuTeks);
+                startActivity(intent);
+
+                finish();
             }
         });
+
+        /*int status = 0;
+        int count = 0;
+        while (status == 0 && count < BerandaActivity.bukuTeks.size()){
+
+            if (BerandaActivity.bukuTeks.get(count).getKode() == bukuTeks.getKode()){
+                bukuTeks_next = BerandaActivity.bukuTeks.get(count++);
+                status = 1;
+            }
+
+            count++;
+        }*/
+
+        /*next = findViewById(R.id.next);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(HasilKuisActivity.this);
+                alert
+                        .setMessage("Apakah kamu sudah siap membaca?")
+                        .setCancelable(false)
+                        .setPositiveButton("Ya",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(getApplicationContext(), BacaanActivity.class);
+                                        intent.putExtra("bukuteks", bukuTeks_next);
+                                        startActivity(intent);
+                                    }
+                                })
+                        .setNegativeButton("Tidak",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                    }
+                                });
+                AlertDialog alertDialog = alert.create();
+                alertDialog.show();
+            }
+        });*/
     }
 }

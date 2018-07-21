@@ -27,11 +27,14 @@
         <activity
             android:name=".BerandaActivity"
             android:theme="@style/AppTheme.NoActionBar">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".InformasiActivity"
@@ -54,6 +57,7 @@
         <activity
             android:name=".HasilKuisActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TentangKamiActivity"></activity>
     </application>
 
 </manifest>

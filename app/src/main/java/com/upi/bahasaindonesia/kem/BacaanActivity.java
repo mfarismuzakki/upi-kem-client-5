@@ -75,6 +75,7 @@ public class BacaanActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(BacaanActivity.this, SoalLatihanActivity.class);
                     intent.putExtra("objKuis", kuis);
+                    intent.putExtra("bukuteks", bukuTeks);
                     startActivity(intent);
 
                     finish();
