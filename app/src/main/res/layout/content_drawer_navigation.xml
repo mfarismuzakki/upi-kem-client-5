@@ -8,11 +8,6 @@
     tools:context="com.upi.bahasaindonesia.kem.BerandaActivity"
     tools:showIn="@layout/app_bar_drawer_navigation">
 
-    <!--<include
-        layout="@layout/activity_beranda"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />-->
-
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -32,14 +27,6 @@
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:gravity="center">
-
-                <!--<ImageButton
-                    android:id="@+id/tombol_menu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ikon_menu"
-                    android:background="@color/transparan"
-                    android:contentDescription="@string/menu" />-->
 
                 <TextView
                     android:layout_width="match_parent"

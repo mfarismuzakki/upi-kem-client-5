@@ -11,10 +11,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.upi.bahasaindonesia.kem.models.Akun;
 import com.upi.bahasaindonesia.kem.models.BukuTeks;
@@ -34,8 +34,6 @@ public class BerandaActivity extends AppCompatActivity
 
         akun = (Akun) getIntent().getSerializableExtra("akun");
         bukuTeks = (ArrayList<BukuTeks>) getIntent().getSerializableExtra("bukuteks");
-
-        Log.d("tes", String.valueOf(bukuTeks));
 
         LinearLayout tombolInfo = findViewById(R.id.tombol_informasi);
         LinearLayout tombolPetunjuk = findViewById(R.id.tombol_petunjuk);
@@ -113,13 +111,14 @@ public class BerandaActivity extends AppCompatActivity
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
+    DrawerLayout drawerLayout = null;
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.kembali_beranda) {
-        } else if (id == R.id.profil) {
+        if (id == R.id.profil) {
 
         } else if (id == R.id.tentang_kami) {
 
@@ -129,8 +128,13 @@ public class BerandaActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        if (drawerLayout != null) {
+            drawerLayout = findViewById(R.id.drawer_layout);
+            drawerLayout.closeDrawer(GravityCompat.START);
+
+            TextView namaPeserta = findViewById(R.id.nama_profil);
+            namaPeserta.setText(akun.getNamaLengkap());
+        }
 
         return true;
     }
