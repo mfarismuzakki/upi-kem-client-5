@@ -3,15 +3,13 @@ package com.upi.bahasaindonesia.kem;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.upi.bahasaindonesia.kem.globals.Variables;
 import com.upi.bahasaindonesia.kem.models.Akun;
@@ -21,10 +19,8 @@ import com.upi.bahasaindonesia.kem.models.Kuis;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -71,7 +67,7 @@ public class SoalLatihanActivity extends AppCompatActivity {
         rb2 = findViewById(R.id.radioButton2);
         rb3 = findViewById(R.id.radioButton3);
         rb4 = findViewById(R.id.radioButton4);
-        tombolGantiSoal = findViewById(R.id.next);
+        tombolGantiSoal = findViewById(R.id.kembali_latihan);
         soal = findViewById(R.id.soal);
 
         Intent i = getIntent();

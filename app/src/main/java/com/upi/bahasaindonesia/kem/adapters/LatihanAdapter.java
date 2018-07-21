@@ -1,6 +1,7 @@
 package com.upi.bahasaindonesia.kem.adapters;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -57,6 +58,8 @@ public class LatihanAdapter extends RecyclerView.Adapter<LatihanAdapter.ViewHold
                                 Intent intent = new Intent(context, BacaanActivity.class);
                                 intent.putExtra("bukuteks", bukuTeks.get(viewHolder.getAdapterPosition()));
                                 context.startActivity(intent);
+
+                                ((Activity)context).finish();
                             }
                         })
                         .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
@@ -93,7 +96,6 @@ public class LatihanAdapter extends RecyclerView.Adapter<LatihanAdapter.ViewHold
         gradientDrawable.setColor(Color.parseColor(warna[position % warna.length]));
         gradientDrawable.setCornerRadius(15);
         holder.wadah.setBackground(gradientDrawable);
-
     }
 
     @Override

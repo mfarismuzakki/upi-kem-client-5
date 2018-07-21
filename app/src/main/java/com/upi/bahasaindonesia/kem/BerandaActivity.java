@@ -91,12 +91,19 @@ public class BerandaActivity extends AppCompatActivity
                 .show();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.beranda) {
+        if (id == R.id.kembali_beranda) {
             title.setText("Beranda");
             BerandaFragment fragment = new BerandaFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

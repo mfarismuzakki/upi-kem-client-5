@@ -2,18 +2,16 @@ package com.upi.bahasaindonesia.kem;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.upi.bahasaindonesia.kem.models.BukuTeks;
 import com.upi.bahasaindonesia.kem.models.Kuis;
 
 public class HasilKuisActivity extends AppCompatActivity {
@@ -24,7 +22,11 @@ public class HasilKuisActivity extends AppCompatActivity {
     RatingBar rating;
     Button next, beranda;
     private Context context;
+    TextView jumlah_soal_benar, waktu_baca, skor_kpm, pesan;
+    RatingBar rating;
+    Button kembaliLatihan, kembaliBeranda;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,7 @@ public class HasilKuisActivity extends AppCompatActivity {
         Intent i = getIntent();
         kuis = (Kuis)i.getSerializableExtra("objKuis");
         bukuTeks = (BukuTeks) i.getSerializableExtra("bukuteks");
+        Kuis kuis = (Kuis) i.getSerializableExtra("objKuis");
 
         waktu_baca = findViewById(R.id.waktu_baca);
         waktu_baca.setText(": " + kuis.getWaktuBaca() + " detik");
@@ -56,32 +59,45 @@ public class HasilKuisActivity extends AppCompatActivity {
             rating.setRating(1);
             pesan.setText("Belajar lebih giat lagi, ya!");
         }
-        else if ((kpm > 59) && (kpm < 80)){
+        else if (kpm < 80){
             rating.setRating(2);
             pesan.setText("Lumayan, tapi perlu perbaikan!");
         }
-        else if ((kpm > 79) && (kpm < 100)){
+        else if (kpm < 100){
             rating.setRating(3);
             pesan.setText("Bagus, cukup membanggakan!");
         }
-        else if ((kpm > 99) && (kpm < 121)){
+        else if (kpm < 121){
             rating.setRating(4);
             pesan.setText("Selamat! Pertahankan ya!");
         }
-        else if (kpm > 120){
+        else {
             rating.setRating(5);
             pesan.setText("Hebat! Kamu sungguh luar biasa!");
         }
 
-        beranda = findViewById(R.id.beranda);
-        beranda.setOnClickListener(new View.OnClickListener() {
+        kembaliLatihan = findViewById(R.id.kembali_latihan);
+        kembaliLatihan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(HasilKuisActivity.this, BerandaActivity.class);
                 intent.putExtra("akun", BerandaActivity.akun);
                 intent.putExtra("bukuteks", BerandaActivity.bukuTeks);
                 startActivity(intent);
 
+                BerandaActivity.akun.setNomorTeksBacaan((BerandaActivity.akun.getNomorTeksBacaan() + 1));
+
+                startActivity(new Intent(getApplicationContext(), DaftarLatihanActivity.class));
+
+                finish();
+            }
+        });
+
+        kembaliBeranda = findViewById(R.id.kembali_beranda);
+        kembaliBeranda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
             }
         });
