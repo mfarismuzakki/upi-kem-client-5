@@ -19,8 +19,10 @@ import com.upi.bahasaindonesia.kem.models.Kuis;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -97,13 +99,6 @@ public class SoalLatihanActivity extends AppCompatActivity {
                     kuis.setPoinDidapat(mNilai);
                     kuis.setPoinMax(nilai_max);
                     kuis.setSoalBenar(benar);
-
-                    /*Intent intent = new Intent(SoalLatihanActivity.this, HasilKuisActivity.class);
-                    intent.putExtra("objKuis", kuis);
-                    intent.putExtra("bukuteks", bukuTeks);
-                    startActivity(intent);
-
-                    finish();*/
                     
                     new ProsesInputHasil().execute();
                 }

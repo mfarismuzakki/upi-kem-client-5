@@ -62,7 +62,11 @@ public class BerandaActivity extends AppCompatActivity
         fragmentTransaction.commit();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
         navigationView.setNavigationItemSelectedListener(this);
+
+        TextView username = headerView.findViewById(R.id.nama_profil);
+        username.setText(akun.getNamaLengkap());
     }
 
     @Override
@@ -89,13 +93,6 @@ public class BerandaActivity extends AppCompatActivity
                 })
                 .setCancelable(false)
                 .show();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
