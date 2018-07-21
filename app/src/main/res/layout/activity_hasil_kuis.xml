@@ -125,7 +125,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/next"
+            android:id="@+id/kembali_latihan"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -136,7 +136,7 @@
             tools:ignore="ButtonStyle" />
 
         <Button
-            android:id="@+id/beranda"
+            android:id="@+id/kembali_beranda"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

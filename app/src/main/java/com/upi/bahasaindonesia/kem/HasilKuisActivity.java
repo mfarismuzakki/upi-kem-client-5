@@ -4,21 +4,18 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.upi.bahasaindonesia.kem.models.BukuTeks;
 import com.upi.bahasaindonesia.kem.models.Kuis;
 
 public class HasilKuisActivity extends AppCompatActivity {
 
     TextView jumlah_soal_benar, waktu_baca, skor_kpm, pesan;
     RatingBar rating;
-    Button next, beranda;
+    Button kembaliLatihan, kembaliBeranda;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -68,11 +65,23 @@ public class HasilKuisActivity extends AppCompatActivity {
             pesan.setText("Hebat! Kamu sungguh luar biasa!");
         }
 
-        beranda = findViewById(R.id.beranda);
-        beranda.setOnClickListener(new View.OnClickListener() {
+        kembaliLatihan = findViewById(R.id.kembali_latihan);
+        kembaliLatihan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                BerandaActivity.akun.setNomorTeksBacaan((BerandaActivity.akun.getNomorTeksBacaan() + 1) % BerandaActivity.bukuTeks.size());
 
+                startActivity(new Intent(getApplicationContext(), DaftarLatihanActivity.class));
+
+                finish();
+            }
+        });
+
+        kembaliBeranda = findViewById(R.id.kembali_beranda);
+        kembaliBeranda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

@@ -111,7 +111,6 @@ public class BerandaActivity extends AppCompatActivity
         int id = item.getItemId();
 
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
-
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -119,7 +118,7 @@ public class BerandaActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.beranda) {
+        if (id == R.id.kembali_beranda) {
         } else if (id == R.id.profil) {
 
         } else if (id == R.id.tentang_kami) {

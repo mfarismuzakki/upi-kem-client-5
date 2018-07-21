@@ -10,19 +10,15 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.upi.bahasaindonesia.kem.globals.Variables;
-import com.upi.bahasaindonesia.kem.models.Akun;
 import com.upi.bahasaindonesia.kem.models.Kuis;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -68,7 +64,7 @@ public class SoalLatihanActivity extends AppCompatActivity {
         rb2 = findViewById(R.id.radioButton2);
         rb3 = findViewById(R.id.radioButton3);
         rb4 = findViewById(R.id.radioButton4);
-        tombolGantiSoal = findViewById(R.id.next);
+        tombolGantiSoal = findViewById(R.id.kembali_latihan);
         soal = findViewById(R.id.soal);
 
         Intent i = getIntent();
@@ -148,8 +144,6 @@ public class SoalLatihanActivity extends AppCompatActivity {
     @SuppressLint("StaticFieldLeak")
     private class ProsesInputHasil extends AsyncTask<Void, Void, Boolean> {
 
-        private String pesan = "";
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -204,27 +198,6 @@ public class SoalLatihanActivity extends AppCompatActivity {
                 dataOutputStream.writeBytes(jsonObject.toString());
                 dataOutputStream.flush();
                 dataOutputStream.close();
-            } catch (IOException | JSONException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                int HttpResponse = httpURLConnection.getResponseCode();
-
-                if (HttpResponse == HttpURLConnection.HTTP_OK) {
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"));
-                    String line;
-                    StringBuilder stringBuilder = new StringBuilder("");
-
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line).append("\n");
-                    }
-                    bufferedReader.close();
-
-                    JSONObject jsonObject = new JSONObject(stringBuilder.toString());
-                    pesan = jsonObject.getString("pesan");
-                }
-
             } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
