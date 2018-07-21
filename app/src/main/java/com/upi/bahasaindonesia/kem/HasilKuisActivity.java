@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.upi.bahasaindonesia.kem.models.BukuTeks;
 import com.upi.bahasaindonesia.kem.models.Kuis;
 
 public class HasilKuisActivity extends AppCompatActivity {
@@ -22,8 +23,6 @@ public class HasilKuisActivity extends AppCompatActivity {
     RatingBar rating;
     Button next, beranda;
     private Context context;
-    TextView jumlah_soal_benar, waktu_baca, skor_kpm, pesan;
-    RatingBar rating;
     Button kembaliLatihan, kembaliBeranda;
 
     @SuppressLint("SetTextI18n")

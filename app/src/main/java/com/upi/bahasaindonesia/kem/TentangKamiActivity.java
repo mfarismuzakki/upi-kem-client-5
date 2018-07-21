@@ -25,44 +25,5 @@ public class TentangKamiActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        tentang_kami = findViewById(R.id.tentang_kami);
-        tentang_kami.setText("\n" +
-                "\n" +
-                "Aplikasi ini dirancang dalam sistem Android untuk mengukur Kemampuan Efektif Membaca (KEM) kelas 5 SD. " +
-                "\n" +
-                "\n" +
-                "Aplikasi ini dapat membantu siswa dan guru dalam proses pembelajaran. Selain itu, aplikasi ini dapat memudahkan siswa berlatih meningkatkan KEM secara mandiri di mana pun siswa berada." +
-                "\n" +
-                "\n" +
-                "Aplikasi ini dirancang untuk setiap tingkatan kelas pada jenjang SD, SMP, dan SMA. " +
-                "\n" +
-                "\n" +
-                "versi 1" +
-                "\n" +
-                "\n" +
-                "Tim Perancang:" +
-                "\n" +
-                "1. Dewi Mustikaningsih" +
-                "\n" +
-                "2. Dr. Hj. Vismaia S. Damaianti, M.Pd." +
-                "\n" +
-                "3. Rosita Rahma, M.Pd." +
-                "\n" +
-                "4. Dr. Hj. Yeti Mulyati, M.Pd." +
-                "\n" +
-                "\n" +
-                "Pengembang Aplikasi:" +
-                "\n" +
-                "1. Herbert Siregar, M.T." +
-                "\n" +
-                "2. Rizki Fauzi Rahman" +
-                "\n" +
-                "3. Muhammad Faris Muzakki" +
-                "\n" +
-                "4. Naufan Rusyda Faikar" +
-                "\n" +
-                "5. Yahya Firdaus" +
-                "\n");
     }
 }

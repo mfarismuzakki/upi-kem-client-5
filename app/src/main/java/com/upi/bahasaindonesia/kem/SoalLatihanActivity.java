@@ -19,8 +19,10 @@ import com.upi.bahasaindonesia.kem.models.Kuis;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -216,23 +218,8 @@ public class SoalLatihanActivity extends AppCompatActivity {
             }
 
             try {
-                int HttpResponse = httpURLConnection.getResponseCode();
-
-                if (HttpResponse == HttpURLConnection.HTTP_OK) {
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"));
-                    String line;
-                    StringBuilder stringBuilder = new StringBuilder("");
-
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line).append("\n");
-                    }
-                    bufferedReader.close();
-
-                    JSONObject jsonObject = new JSONObject(stringBuilder.toString());
-                    pesan = jsonObject.getString("pesan");
-                }
-
-            } catch (IOException | JSONException e) {
+                httpURLConnection.getResponseCode();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 

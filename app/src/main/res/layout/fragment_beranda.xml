@@ -3,65 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.upi.bahasaindonesia.kem.BerandaFragment">
-
-    <!--<android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:elevation="0dp">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll"
-            app:contentInsetStart="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:gravity="center">
-
-                &lt;!&ndash;<ImageButton
-                    android:id="@+id/tombol_menu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ikon_menu"
-                    android:background="@color/transparan"
-                    android:contentDescription="@string/menu" />&ndash;&gt;
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="0dp"
-                    android:text="@string/beranda"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:textColor="@color/hitam"
-                    android:textSize="24sp"
-                    android:layout_marginEnd="30dp"/>
-
-            </LinearLayout>
-
-        </android.support.v7.widget.Toolbar>
-
-    </android.support.design.widget.AppBarLayout>-->
+    tools:context="com.upi.bahasaindonesia.kem.BerandaFragment"
+    android:background="@color/putih">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:padding="10dp"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingBottom="25dp"
             android:orientation="vertical">
 
             <LinearLayout
