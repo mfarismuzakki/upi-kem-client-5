@@ -34,7 +34,7 @@ import java.net.URL;
  */
 public class ProfilFragment extends Fragment {
 
-    TextView restart, nama, sekolah, kelas, nisn, ganti_password;
+    TextView restart, nama, sekolah, kelas, nisn, ganti_password, ganti_foto_profil;
 
     public ProfilFragment() {
         // Required empty public constructor
@@ -76,6 +76,14 @@ public class ProfilFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), GantiPasswordActivity.class));
+            }
+        });
+
+        ganti_foto_profil = v.findViewById(R.id.ganti_foto_profil);
+        ganti_foto_profil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), GantiFotoProfilActivity.class));
             }
         });
 
