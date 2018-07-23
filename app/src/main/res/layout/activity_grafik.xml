@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Skor : 5 kpm"/>
+                        android:text="Skor : 0 kpm"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -139,14 +139,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Waktu Membaca : 20000 detik"/>
+                        android:text="Waktu Membaca : 0 detik"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Kata : 195"/>
+                        android:text="Banyak Kata : 0"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -161,18 +161,18 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Jawaban Yang Benar : 5"/>
+                        android:text="Jawaban Yang Benar : 0"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Soal : 5"/>
+                        android:text="Banyak Soal : 0"/>
                 </LinearLayout>
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBar1"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -204,14 +204,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Nomor Bacaan : 1"/>
+                        android:text="Nomor Bacaan : 2"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Skor : 5 kpm"/>
+                        android:text="Skor : 0 kpm"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -226,14 +226,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Waktu Membaca : 20000 detik"/>
+                        android:text="Waktu Membaca : 0 detik"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Kata : 195"/>
+                        android:text="Banyak Kata : 0"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -248,18 +248,18 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Jawaban Yang Benar : 5"/>
+                        android:text="Jawaban Yang Benar : 0"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Soal : 5"/>
+                        android:text="Banyak Soal : 0"/>
                 </LinearLayout>
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBar2"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -291,14 +291,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Nomor Bacaan : 1"/>
+                        android:text="Nomor Bacaan : 3"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Skor : 5 kpm"/>
+                        android:text="Skor : 0 kpm"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -313,14 +313,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Waktu Membaca : 20000 detik"/>
+                        android:text="Waktu Membaca : 0 detik"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Kata : 195"/>
+                        android:text="Banyak Kata : 0"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -335,18 +335,18 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Jawaban Yang Benar : 5"/>
+                        android:text="Jawaban Yang Benar : 0"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Soal : 5"/>
+                        android:text="Banyak Soal : 0"/>
                 </LinearLayout>
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBar3"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -378,14 +378,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Nomor Bacaan : 1"/>
+                        android:text="Nomor Bacaan : 4"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Skor : 5 kpm"/>
+                        android:text="Skor : 0 kpm"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -400,14 +400,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Waktu Membaca : 20000 detik"/>
+                        android:text="Waktu Membaca : 0 detik"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Kata : 195"/>
+                        android:text="Banyak Kata : 0"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -422,18 +422,18 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Jawaban Yang Benar : 5"/>
+                        android:text="Jawaban Yang Benar : 0"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Soal : 5"/>
+                        android:text="Banyak Soal : 0"/>
                 </LinearLayout>
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBar4"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -465,14 +465,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Nomor Bacaan : 1"/>
+                        android:text="Nomor Bacaan : 5"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Skor : 5 kpm"/>
+                        android:text="Skor : 0 kpm"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -487,14 +487,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Waktu Membaca : 20000 detik"/>
+                        android:text="Waktu Membaca : 0 detik"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Kata : 195"/>
+                        android:text="Banyak Kata : 0"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -509,18 +509,18 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Jawaban Yang Benar : 5"/>
+                        android:text="Jawaban Yang Benar : 0"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Soal : 5"/>
+                        android:text="Banyak Soal : 0"/>
                 </LinearLayout>
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBar5"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -552,14 +552,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Nomor Bacaan : 1"/>
+                        android:text="Nomor Bacaan : 6"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Skor : 5 kpm"/>
+                        android:text="Skor : 0 kpm"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -574,14 +574,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Waktu Membaca : 20000 detik"/>
+                        android:text="Waktu Membaca : 0 detik"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Kata : 195"/>
+                        android:text="Banyak Kata : 0"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -596,18 +596,18 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Jawaban Yang Benar : 5"/>
+                        android:text="Jawaban Yang Benar : 0"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Soal : 5"/>
+                        android:text="Banyak Soal : 0"/>
                 </LinearLayout>
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBar6"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -639,14 +639,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Nomor Bacaan : 1"/>
+                        android:text="Nomor Bacaan : 7"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Skor : 5 kpm"/>
+                        android:text="Skor : 0 kpm"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -661,14 +661,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Waktu Membaca : 20000 detik"/>
+                        android:text="Waktu Membaca : 0 detik"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Kata : 195"/>
+                        android:text="Banyak Kata : 0"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -683,18 +683,18 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Jawaban Yang Benar : 5"/>
+                        android:text="Jawaban Yang Benar : 0"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Soal : 5"/>
+                        android:text="Banyak Soal : 0"/>
                 </LinearLayout>
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBar7"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -726,14 +726,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Nomor Bacaan : 1"/>
+                        android:text="Nomor Bacaan : 8"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Skor : 5 kpm"/>
+                        android:text="Skor : 0 kpm"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -748,14 +748,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Waktu Membaca : 20000 detik"/>
+                        android:text="Waktu Membaca : 0 detik"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Kata : 195"/>
+                        android:text="Banyak Kata : 0"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -770,18 +770,18 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Jawaban Yang Benar : 5"/>
+                        android:text="Jawaban Yang Benar : 0"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Soal : 5"/>
+                        android:text="Banyak Soal : 0"/>
                 </LinearLayout>
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBar8"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -813,14 +813,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Nomor Bacaan : 1"/>
+                        android:text="Nomor Bacaan : 9"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Skor : 5 kpm"/>
+                        android:text="Skor : 0 kpm"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -835,14 +835,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Waktu Membaca : 20000 detik"/>
+                        android:text="Waktu Membaca : 0 detik"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Kata : 195"/>
+                        android:text="Banyak Kata : 0"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -857,18 +857,18 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Jawaban Yang Benar : 5"/>
+                        android:text="Jawaban Yang Benar : 0"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Soal : 5"/>
+                        android:text="Banyak Soal : 0"/>
                 </LinearLayout>
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBar9"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -900,14 +900,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Nomor Bacaan : 1"/>
+                        android:text="Nomor Bacaan : 10"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Skor : 5 kpm"/>
+                        android:text="Skor : 0 kpm"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -922,14 +922,14 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Waktu Membaca : 20000 detik"/>
+                        android:text="Waktu Membaca : 0 detik"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Kata : 195"/>
+                        android:text="Banyak Kata : 0"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -944,18 +944,18 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Jawaban Yang Benar : 5"/>
+                        android:text="Jawaban Yang Benar : 0"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/putih"
                         android:textSize="14sp"
-                        android:text="Banyak Soal : 5"/>
+                        android:text="Banyak Soal : 0"/>
                 </LinearLayout>
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/progressBar10"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
