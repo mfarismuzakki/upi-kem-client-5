@@ -2,10 +2,12 @@ package com.upi.bahasaindonesia.kem;
 
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +34,7 @@ import java.net.URL;
  */
 public class ProfilFragment extends Fragment {
 
-    TextView restart, nama, sekolah, kelas;
+    TextView restart, nama, sekolah, kelas, nisn, ganti_password;
 
     public ProfilFragment() {
         // Required empty public constructor
@@ -46,14 +48,36 @@ public class ProfilFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_profil, container, false);
 
         restart = v.findViewById(R.id.restart);
-        if (BerandaActivity.akun.getNomorTeksBacaan() == 11) {
+        if (BerandaActivity.akun.getNomorTeksBacaan() == 2) {
             restart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    new ProsesReset().execute();
+                    new AlertDialog.Builder(getContext())
+                            .setMessage("Apakah kamu yakin ingin mereset ke awal?")
+                            .setNegativeButton("Ya", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    new ProsesReset().execute();
+                                }
+                            })
+                            .setPositiveButton("Tidak", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .setCancelable(false)
+                            .show();
                 }
             });
         }
+
+        ganti_password = v.findViewById(R.id.ganti_password);
+        ganti_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), GantiPasswordActivity.class));
+            }
+        });
 
         nama = v.findViewById(R.id.nama_lengkap);
         nama.setText(BerandaActivity.akun.getNamaLengkap());
@@ -63,6 +87,9 @@ public class ProfilFragment extends Fragment {
 
         kelas = v.findViewById(R.id.kelas);
         kelas.setText(Integer.toString(BerandaActivity.akun.getKelas()));
+
+        nisn = v.findViewById(R.id.nisn);
+        nisn.setText(BerandaActivity.akun.getNisn());
 
         return v;
     }

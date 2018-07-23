@@ -1,6 +1,8 @@
 package com.upi.bahasaindonesia.kem;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,20 @@ import com.jjoe64.graphview.ValueDependentColor;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.upi.bahasaindonesia.kem.globals.Variables;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.util.Collections;
 
 public class GrafikActivity extends AppCompatActivity {
 
@@ -55,7 +71,6 @@ public class GrafikActivity extends AppCompatActivity {
         });
         graph2.addSeries(series2);
 
-// styling
         series2.setValueDependentColor(new ValueDependentColor<DataPoint>() {
             @Override
             public int get(DataPoint data) {
@@ -65,10 +80,9 @@ public class GrafikActivity extends AppCompatActivity {
 
         series2.setSpacing(0);
 
-// draw values on top
         series2.setDrawValuesOnTop(true);
         series2.setValuesOnTopColor(Color.RED);
-//series.setValuesOnTopSize(50);
+        /*series2.setValuesOnTopSize(50);*/
 
 
 
@@ -102,4 +116,118 @@ public class GrafikActivity extends AppCompatActivity {
             }
         });
     }
+
+    /*@SuppressLint("StaticFieldLeak")
+    private class GetQuestion extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            URL url = null;
+            try {
+                url = new URL(Variables.API + "Kuis/get_by_id/" + Integer.toString(bukuTeks.getKode()));
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            HttpURLConnection httpURLConnection = null;
+            try {
+                assert url != null;
+                httpURLConnection = (HttpURLConnection) url.openConnection();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                assert httpURLConnection != null;
+                httpURLConnection.setRequestMethod("GET");
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            }
+            httpURLConnection.addRequestProperty("Accept", "application/json");
+            httpURLConnection.addRequestProperty("Content-Type", "application/json");
+
+            try {
+                httpURLConnection.connect();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+
+                int HttpResponse = httpURLConnection.getResponseCode();
+
+                if (HttpResponse == HttpURLConnection.HTTP_OK) {
+
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"));
+                    String line;
+                    StringBuilder stringBuilder = new StringBuilder("");
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+
+                    JSONArray jsonArray = new JSONArray(stringBuilder.toString());
+
+                    allQuestion.clear();
+                    kuis.reset();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject= jsonArray.getJSONObject(i);
+
+                        if (i == 0){
+                            tampKode = jsonObject.getInt("kode_soal_asal");
+                            kuis.setKodeSoal(jsonObject.getInt("kode_soal_asal"));
+                            kuis.setTeks(jsonObject.getString("teks_soal"));
+                            kuis.setPoin(jsonObject.getInt("poin"));
+                            allQuestion.add(j);
+                            j++;
+                            k = 0;
+                        }
+
+                        else if (tampKode != jsonObject.getInt("kode_soal_asal")) {
+                            tampKode = jsonObject.getInt("kode_soal_asal");
+                            kuis.setKodeSoal(jsonObject.getInt("kode_soal_asal"));
+                            kuis.setKodeBukuTeks(jsonObject.getInt("kode_buku_teks"));
+                            kuis.setTeks(jsonObject.getString("teks_soal"));
+                            kuis.setPoin(jsonObject.getInt("poin"));
+                            allQuestion.add(j);
+                            j++;
+                            l++;
+                            k = 0;
+                        }
+
+                        kuis.setChoiceKodePilihanJawaban(jsonObject.getInt("kode_pilihan_jawaban"), l, k);
+                        kuis.setChoiceKodeSoal(jsonObject.getInt("kode_soal"), l, k);
+                        kuis.setChoiceTeks(jsonObject.getString("teks_pilihan"), l, k);
+                        kuis.setChoiceStatus(jsonObject.getString("status"), l, k);
+                        k++;
+                    }
+
+                }
+
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                return false;
+            }
+
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            super.onPostExecute(success);
+
+            status = 1;
+            Collections.shuffle(allQuestion);
+            kuis.setNomor(allQuestion);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }*/
+
 }
