@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Objects;
 
 
 /**
@@ -32,15 +34,16 @@ import java.net.URL;
  */
 public class ProfilFragment extends Fragment {
 
-    TextView restart, nama, sekolah, kelas;
+    TextView restart, nisn, nama, sekolah, kelas;
 
     public ProfilFragment() {
         // Required empty public constructor
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profil, container, false);
@@ -54,6 +57,9 @@ public class ProfilFragment extends Fragment {
                 }
             });
         }
+
+        nisn = v.findViewById(R.id.nisn);
+        nisn.setText(BerandaActivity.akun.getNisn());
 
         nama = v.findViewById(R.id.nama_lengkap);
         nama.setText(BerandaActivity.akun.getNamaLengkap());
@@ -69,8 +75,6 @@ public class ProfilFragment extends Fragment {
 
     @SuppressLint("StaticFieldLeak")
     private class ProsesReset extends AsyncTask<Void, Void, Boolean> {
-
-        private String pesan = "";
 
         @Override
         protected void onPreExecute() {
@@ -122,23 +126,8 @@ public class ProfilFragment extends Fragment {
             }
 
             try {
-                int HttpResponse = httpURLConnection.getResponseCode();
-
-                if (HttpResponse == HttpURLConnection.HTTP_OK) {
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"));
-                    String line;
-                    StringBuilder stringBuilder = new StringBuilder("");
-
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line).append("\n");
-                    }
-                    bufferedReader.close();
-
-                    JSONObject jsonObject = new JSONObject(stringBuilder.toString());
-                    pesan = jsonObject.getString("pesan");
-                }
-
-            } catch (IOException | JSONException e) {
+                httpURLConnection.getResponseCode();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
@@ -155,8 +144,9 @@ public class ProfilFragment extends Fragment {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
 
-            Intent intent = new Intent(getContext(), MasukActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(getContext(), MasukActivity.class));
+
+            Objects.requireNonNull(getActivity()).finish();
 
         }
     }

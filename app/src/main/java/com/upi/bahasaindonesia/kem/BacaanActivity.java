@@ -9,6 +9,8 @@ import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.upi.bahasaindonesia.kem.globals.Variables;
@@ -46,6 +48,11 @@ public class BacaanActivity extends AppCompatActivity {
 
     Handler handler;
 
+    TextView judul;
+    TextView teks;
+
+    Button tombolSelesai;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,16 +62,10 @@ public class BacaanActivity extends AppCompatActivity {
         assert bundle != null;
         bukuTeks = (BukuTeks) getIntent().getSerializableExtra("bukuteks");
 
-        TextView judul = findViewById(R.id.teks_buku_judul);
-        TextView teks = findViewById(R.id.teks_buku_teks);
-        Button tombolSelesai = findViewById(R.id.tombol_selesai_membaca);
+        judul = findViewById(R.id.teks_buku_judul);
+        teks = findViewById(R.id.teks_buku_teks);
+        tombolSelesai = findViewById(R.id.tombol_selesai_membaca);
         stopwatch = findViewById(R.id.stopwatch);
-
-        judul.setText(bukuTeks.getJudul());
-        teks.setText(bukuTeks.getTeks());
-
-        String trimmed = bukuTeks.getTeks().trim();
-        kuis.setJumlahKata(trimmed.isEmpty() ? 0 : trimmed.split("\\s+").length);
 
         tombolSelesai.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,11 +85,6 @@ public class BacaanActivity extends AppCompatActivity {
         });
 
         new GetQuestion().execute();
-
-        handler = new Handler();
-
-        StartTime = SystemClock.uptimeMillis();
-        handler.postDelayed(runnable, 0);
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -196,6 +192,22 @@ public class BacaanActivity extends AppCompatActivity {
             status = 1;
             Collections.shuffle(allQuestion);
             kuis.setNomor(allQuestion);
+
+            LinearLayout loadingBacaan = findViewById(R.id.loading_bacaan);
+            loadingBacaan.setVisibility(View.GONE);
+
+            judul.setText(bukuTeks.getJudul());
+            teks.setText(bukuTeks.getTeks());
+
+            String trimmed = bukuTeks.getTeks().trim();
+            kuis.setJumlahKata(trimmed.isEmpty() ? 0 : trimmed.split("\\s+").length);
+
+            handler = new Handler();
+
+            StartTime = SystemClock.uptimeMillis();
+            handler.postDelayed(runnable, 0);
+
+            tombolSelesai.setVisibility(View.VISIBLE);
         }
 
         @Override

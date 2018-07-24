@@ -159,72 +159,71 @@ public class MasukActivity extends AppCompatActivity {
                         akun.setSekolah(jsonObject.getString("sekolah"));
                         akun.setKelas(jsonObject.getInt("kelas"));
                         akun.setNomorTeksBacaan(jsonObject.getInt("nomor_buku_teks"));
-                    }
-                }
 
-            } catch (IOException | JSONException e) {
-                e.printStackTrace();
-            }
+                        try {
+                            url = new URL(Variables.API + "Buku_Teks/get_by_class/" + Integer.toString(akun.getKelas()));
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        }
 
-            try {
-                url = new URL(Variables.API + "Buku_Teks/get_by_class/" + Integer.toString(akun.getKelas()));
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
+                        httpURLConnection = null;
 
-            httpURLConnection = null;
+                        try {
+                            httpURLConnection = (HttpURLConnection) url.openConnection();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
-            try {
-                httpURLConnection = (HttpURLConnection) url.openConnection();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                        try {
+                            assert httpURLConnection != null;
+                            httpURLConnection.setRequestMethod("POST");
+                            httpURLConnection.setDoInput(true);
+                            httpURLConnection.setDoOutput(true);
+                        } catch (ProtocolException e) {
+                            e.printStackTrace();
+                        }
 
-            try {
-                assert httpURLConnection != null;
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoInput(true);
-                httpURLConnection.setDoOutput(true);
-            } catch (ProtocolException e) {
-                e.printStackTrace();
-            }
+                        httpURLConnection.addRequestProperty("Accept", "application/json");
+                        httpURLConnection.addRequestProperty("Content-Type", "application/json");
 
-            httpURLConnection.addRequestProperty("Accept", "application/json");
-            httpURLConnection.addRequestProperty("Content-Type", "application/json");
+                        try {
+                            httpURLConnection.connect();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
-            try {
-                httpURLConnection.connect();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                        try {
 
-            try {
+                            HttpResponse = httpURLConnection.getResponseCode();
 
-                int HttpResponse = httpURLConnection.getResponseCode();
+                            if (HttpResponse == HttpURLConnection.HTTP_OK) {
 
-                if (HttpResponse == HttpURLConnection.HTTP_OK) {
+                                bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"));
+                                stringBuilder = new StringBuilder("");
+                                while ((line = bufferedReader.readLine()) != null) {
+                                    stringBuilder.append(line).append("\n");
+                                }
+                                bufferedReader.close();
 
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"));
-                    String line;
-                    StringBuilder stringBuilder = new StringBuilder("");
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line).append("\n");
-                    }
-                    bufferedReader.close();
+                                JSONArray jsonArray = new JSONArray(stringBuilder.toString());
 
-                    JSONArray jsonArray = new JSONArray(stringBuilder.toString());
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    jsonObject = jsonArray.getJSONObject(i);
+                                    BukuTeks bukuTeks = new BukuTeks();
+                                    bukuTeks.setKode(jsonObject.getInt("kode_buku_teks"));
+                                    bukuTeks.setJudul(jsonObject.getString("judul"));
+                                    bukuTeks.setTeks(jsonObject.getString("teks"));
 
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        BukuTeks bukuTeks = new BukuTeks();
-                        bukuTeks.setKode(jsonObject.getInt("kode_buku_teks"));
-                        bukuTeks.setJudul(jsonObject.getString("judul"));
-                        bukuTeks.setTeks(jsonObject.getString("teks"));
+                                    String trimmed = bukuTeks.getTeks().trim();
+                                    bukuTeks.setJumlahKata(trimmed.isEmpty() ? 0 : trimmed.split("\\s+").length);
 
-                        String trimmed = bukuTeks.getTeks().trim();
-                        bukuTeks.setJumlahKata(trimmed.isEmpty() ? 0 : trimmed.split("\\s+").length);
+                                    bukuTeksArrayList.add(bukuTeks);
+                                }
+                            }
 
-                        bukuTeksArrayList.add(bukuTeks);
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 

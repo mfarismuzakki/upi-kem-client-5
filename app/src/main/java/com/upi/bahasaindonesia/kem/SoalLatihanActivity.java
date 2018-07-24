@@ -12,17 +12,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.upi.bahasaindonesia.kem.globals.Variables;
-import com.upi.bahasaindonesia.kem.models.Akun;
-import com.upi.bahasaindonesia.kem.models.BukuTeks;
 import com.upi.bahasaindonesia.kem.models.Kuis;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -37,7 +33,6 @@ public class SoalLatihanActivity extends AppCompatActivity {
     Button tombolGantiSoal;
     TextView soal;
     private Kuis kuis = new Kuis();
-    private BukuTeks bukuTeks;
     String mJawaban = "";
     private int mNilai = 0;
     private int nilai_max = 0;
@@ -74,7 +69,6 @@ public class SoalLatihanActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         kuis = (Kuis)i.getSerializableExtra("objKuis");
-        bukuTeks = (BukuTeks) i.getSerializableExtra("bukuteks");
 
         nomorUrut = kuis.getNomor();
         max = nomorUrut.size();
@@ -149,8 +143,6 @@ public class SoalLatihanActivity extends AppCompatActivity {
 
     @SuppressLint("StaticFieldLeak")
     private class ProsesInputHasil extends AsyncTask<Void, Void, Boolean> {
-
-        private String pesan = "";
 
         @Override
         protected void onPreExecute() {
@@ -235,5 +227,9 @@ public class SoalLatihanActivity extends AppCompatActivity {
 
             finish();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }

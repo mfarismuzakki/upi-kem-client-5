@@ -94,7 +94,7 @@ public class Kuis implements Serializable {
     private int poin_max;
     private int poin_didapat;
     private int jumlahKata;
-    public List<Integer> kode_pilihan_jawaban = new ArrayList<>();
+    private List<Integer> kode_pilihan_jawaban = new ArrayList<>();
 
     public Integer getKodeBukuTeks(){
         return kode_buku_teks;

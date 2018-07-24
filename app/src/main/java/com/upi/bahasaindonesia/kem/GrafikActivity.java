@@ -1,97 +1,45 @@
 package com.upi.bahasaindonesia.kem;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
+import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.ValueDependentColor;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.upi.bahasaindonesia.kem.globals.Variables;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 
 public class GrafikActivity extends AppCompatActivity {
+
+    ArrayList<Double> skors = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grafik);
-
-        /*GraphView graph = (GraphView) findViewById(R.id.graph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 130),
-                new DataPoint(1, 135),
-                new DataPoint(2, 140),
-                new DataPoint(3, 145),
-                new DataPoint(4, 150),
-                new DataPoint(5, 155),
-                new DataPoint(6, 160),
-                new DataPoint(7, 170),
-                new DataPoint(8, 180),
-                new DataPoint(9, 200),
-                new DataPoint(10, 300),
-                new DataPoint(11, 300)
-        });
-        graph.addSeries(series);*/
-
-
-
-        GraphView graph2 = (GraphView) findViewById(R.id.graph2);
-        BarGraphSeries<DataPoint> series2 = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 130),
-                new DataPoint(1, 135),
-                new DataPoint(2, 140),
-                new DataPoint(3, 145),
-                new DataPoint(4, 150),
-                new DataPoint(5, 155),
-                new DataPoint(6, 160),
-                new DataPoint(7, 170),
-                new DataPoint(8, 180),
-                new DataPoint(9, 200),
-                new DataPoint(10, 300),
-                new DataPoint(11, 300)
-        });
-        graph2.addSeries(series2);
-
-// styling
-        series2.setValueDependentColor(new ValueDependentColor<DataPoint>() {
-            @Override
-            public int get(DataPoint data) {
-                return Color.rgb((int) data.getX()*255/11, (int) Math.abs(data.getY()*255/13), 100);
-            }
-        });
-
-        series2.setSpacing(0);
-
-// draw values on top
-        series2.setDrawValuesOnTop(true);
-        series2.setValuesOnTopColor(Color.RED);
-//series.setValuesOnTopSize(50);
-
-
-
-        /*GraphView graph3 = (GraphView) findViewById(R.id.graph3);
-        BarGraphSeries<DataPoint> series3 = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, -2),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        graph3.addSeries(series3);
-
-        LineGraphSeries<DataPoint> series4 = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 3),
-                new DataPoint(1, 3),
-                new DataPoint(2, 6),
-                new DataPoint(3, 2),
-                new DataPoint(4, 5)
-        });
-        graph3.addSeries(series4);*/
-
-
 
         ImageButton tombolKeluar = findViewById(R.id.tombol_keluar);
 
@@ -101,5 +49,118 @@ public class GrafikActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        new GetReport().execute();
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private class GetReport extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            URL url = null;
+            try {
+                url = new URL(Variables.API + "Kuis/report/" + Integer.toString(BerandaActivity.akun.getKode()));
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            HttpURLConnection httpURLConnection = null;
+            try {
+                assert url != null;
+                httpURLConnection = (HttpURLConnection) url.openConnection();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                assert httpURLConnection != null;
+                httpURLConnection.setRequestMethod("GET");
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            }
+            httpURLConnection.addRequestProperty("Accept", "application/json");
+            httpURLConnection.addRequestProperty("Content-Type", "application/json");
+
+            try {
+                httpURLConnection.connect();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+
+                int HttpResponse = httpURLConnection.getResponseCode();
+
+                if (HttpResponse == HttpURLConnection.HTTP_OK) {
+
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(), "utf-8"));
+                    String line;
+                    StringBuilder stringBuilder = new StringBuilder("");
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+
+                    JSONArray jsonArray = new JSONArray(stringBuilder.toString());
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                        int a = jsonObject.getInt("jumlah_kata");
+                        int b = jsonObject.getInt("waktu_baca");
+                        int c = jsonObject.getInt("poin_pendapatan_kuis");
+                        int d = jsonObject.getInt("poin_maksimal_kuis");
+
+                        skors.add((double) a / b * 60 * c / d);
+                    }
+
+                }
+
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                return false;
+            }
+
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            super.onPostExecute(success);
+
+            GraphView graphView = findViewById(R.id.grafik);
+
+            DataPoint[] dataPoints = new DataPoint[skors.size()];
+            for (int i = 0; i < skors.size(); i++) {
+                dataPoints[i] = new DataPoint(i, skors.get(i));
+            }
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataPoints);
+
+            DataPoint[] dataPoints1 = new DataPoint[skors.size()];
+            for (int i = 0; i < skors.size(); i++) {
+                dataPoints1[i] = new DataPoint(i, 150);
+            }
+            LineGraphSeries<DataPoint> series1 = new LineGraphSeries<>(dataPoints1);
+
+            series1.setColor(Color.GREEN);
+
+            series.setDrawDataPoints(true);
+            series.setDataPointsRadius(10);
+
+            graphView.addSeries(series);
+            graphView.addSeries(series1);
+
+            LinearLayout loadingGrafik = findViewById(R.id.loading_grafik);
+            loadingGrafik.setVisibility(View.GONE);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
     }
 }
