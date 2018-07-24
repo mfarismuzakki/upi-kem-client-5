@@ -52,7 +52,11 @@ public class HasilKuisActivity extends AppCompatActivity {
         rating = findViewById(R.id.ratingBar);
         pesan = findViewById(R.id.pesan);
 
-        if (kpm < 60) {
+        if (kpm == 0){
+            rating.setRating(0);
+            pesan.setText("Belajar lebih giat lagi, ya!");
+        }
+        else if (kpm < 60) {
             rating.setRating(1);
             pesan.setText("Belajar lebih giat lagi, ya!");
         }

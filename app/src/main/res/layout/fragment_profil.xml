@@ -124,16 +124,19 @@
                 android:id="@+id/ganti_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="30dp"
                 android:textSize="20sp"
                 android:textColor="@color/biru"
                 android:text="Ganti Kata Sandi"/>
 
             <TextView
-                android:id="@+id/restart"
+                android:id="@+id/reset"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="30dp"
                 android:textSize="20sp"
