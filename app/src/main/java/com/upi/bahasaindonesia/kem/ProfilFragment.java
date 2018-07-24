@@ -50,7 +50,7 @@ public class ProfilFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profil, container, false);
 
-        restart = v.findViewById(R.id.restart);
+        restart = v.findViewById(R.id.reset);
         if (BerandaActivity.akun.getNomorTeksBacaan() == 2) {
             restart.setOnClickListener(new View.OnClickListener() {
                 @Override
