@@ -50,8 +50,12 @@
         <activity
             android:name=".TentangKamiActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".GantiPasswordActivity" />
-        <activity android:name=".GantiFotoProfilActivity"></activity>
+        <activity
+            android:name=".GantiPasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GantiFotoProfilActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
