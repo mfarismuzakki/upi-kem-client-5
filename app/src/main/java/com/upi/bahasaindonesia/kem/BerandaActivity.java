@@ -2,6 +2,8 @@ package com.upi.bahasaindonesia.kem;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,11 +15,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.upi.bahasaindonesia.kem.models.Akun;
 import com.upi.bahasaindonesia.kem.models.BukuTeks;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class BerandaActivity extends AppCompatActivity
@@ -57,6 +63,16 @@ public class BerandaActivity extends AppCompatActivity
 
         TextView username = headerView.findViewById(R.id.nama_profil);
         username.setText(akun.getNamaLengkap());
+
+        /*ImageView foto_profil = headerView.findViewById(R.id.imageView);
+        URL url_profil_1 = null;
+        try {
+            url_profil_1 = new URL("http://10.0.2.2:80/upi-kem-server-2/assets/profil/profil_1.png");
+            Bitmap bitmap_profil_1 = BitmapFactory.decodeStream(url_profil_1.openConnection().getInputStream());
+            foto_profil.setImageBitmap(bitmap_profil_1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     }
 
     @Override
