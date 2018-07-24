@@ -138,7 +138,7 @@ public class GrafikActivity extends AppCompatActivity {
             for (int i = 0; i < skors.size(); i++) {
                 dataPoints[i] = new DataPoint(i, skors.get(i));
             }
-            BarGraphSeries<DataPoint> series = new BarGraphSeries<>(dataPoints);
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(dataPoints);
 
             DataPoint[] dataPoints1 = new DataPoint[skors.size()];
             for (int i = 0; i < skors.size(); i++) {
@@ -147,6 +147,11 @@ public class GrafikActivity extends AppCompatActivity {
             LineGraphSeries<DataPoint> series1 = new LineGraphSeries<>(dataPoints1);
 
             series1.setColor(Color.GREEN);
+
+            series.setDrawDataPoints(true);
+            series.setDataPointsRadius(10);
+
+            graphView.getViewport().setMinX(1);
 
             graphView.addSeries(series);
             graphView.addSeries(series1);
