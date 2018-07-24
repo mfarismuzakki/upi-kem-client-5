@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -36,6 +37,8 @@ public class LatihanAdapter extends RecyclerView.Adapter<LatihanAdapter.ViewHold
     }
 
     private String[] warna = {"#FDBD57", "#E4716E", "#666666", "#18748A", "#18A076"};
+
+    private int[] gambar1 = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e, R.drawable.f, R.drawable.g, R.drawable.h, R.drawable.i, R.drawable.j};
 
     @NonNull
     @Override
@@ -96,6 +99,9 @@ public class LatihanAdapter extends RecyclerView.Adapter<LatihanAdapter.ViewHold
         gradientDrawable.setColor(Color.parseColor(warna[position % warna.length]));
         gradientDrawable.setCornerRadius(15);
         holder.wadah.setBackground(gradientDrawable);
+
+        // "% gambar1.length" adalah sebagai pengaman saja
+        holder.gambar.setImageResource(gambar1[position % gambar1.length]);
     }
 
     @Override
@@ -109,6 +115,7 @@ public class LatihanAdapter extends RecyclerView.Adapter<LatihanAdapter.ViewHold
         TextView jumlahKata;
         ConstraintLayout wadah;
         ImageView gembok;
+        ImageView gambar;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -117,6 +124,7 @@ public class LatihanAdapter extends RecyclerView.Adapter<LatihanAdapter.ViewHold
             jumlahKata = itemView.findViewById(R.id.buku_teks_jumlah_kata);
             wadah = itemView.findViewById(R.id.teks_buku_wadah);
             gembok = itemView.findViewById(R.id.buku_teks_gembok);
+            gambar = itemView.findViewById(R.id.buku_teks_gambar);
         }
     }
 

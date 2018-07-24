@@ -63,16 +63,6 @@ public class BerandaActivity extends AppCompatActivity
 
         TextView username = headerView.findViewById(R.id.nama_profil);
         username.setText(akun.getNamaLengkap());
-
-        /*ImageView foto_profil = headerView.findViewById(R.id.imageView);
-        URL url_profil_1 = null;
-        try {
-            url_profil_1 = new URL("http://10.0.2.2:80/upi-kem-server-2/assets/profil/profil_1.png");
-            Bitmap bitmap_profil_1 = BitmapFactory.decodeStream(url_profil_1.openConnection().getInputStream());
-            foto_profil.setImageBitmap(bitmap_profil_1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
     }
 
     @Override
@@ -81,24 +71,22 @@ public class BerandaActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            new AlertDialog.Builder(BerandaActivity.this)
+                    .setMessage("Apakah kamu yakin ingin keluar dari aplikasi ini?")
+                    .setNegativeButton("Ya", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .setPositiveButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    })
+                    .setCancelable(false)
+                    .show();
         }
-
-        new AlertDialog.Builder(BerandaActivity.this)
-                .setMessage("Apakah kamu yakin ingin keluar dari aplikasi ini?")
-                .setNegativeButton("Ya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                })
-                .setPositiveButton("Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                })
-                .setCancelable(false)
-                .show();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
