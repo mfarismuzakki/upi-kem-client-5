@@ -48,8 +48,8 @@ public class MasukActivity extends AppCompatActivity {
         masukanKataSandi = findViewById(R.id.masuk_kata_sandi);
 
         // Untuk keperluan pengembangan aplikasi
-        masukanNisn.setText("10117229");
-        masukanKataSandi.setText("pass");
+//        masukanNisn.setText("10117229");
+//        masukanKataSandi.setText("pass");
 
         Button tombolMasuk = findViewById(R.id.tombol_masuk);
         tombolMasuk.setOnClickListener(new View.OnClickListener() {
