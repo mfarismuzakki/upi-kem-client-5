@@ -80,8 +80,7 @@ public class SoalLatihanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 kuis.setKodePilihanJawaban(kode_pilihan_jawaban);
                 nilai_max = nilai_max + nilai;
-                String sub_jawaban = Jaw.substring(3, Jaw.length());
-                if (sub_jawaban.equals(mJawaban)) {
+                if (Jaw.equals(mJawaban)) {
                     mNilai = mNilai + nilai;
                     benar++;
                 }
@@ -104,9 +103,8 @@ public class SoalLatihanActivity extends AppCompatActivity {
         int radioButton = rg.getCheckedRadioButtonId();
         rb = findViewById(radioButton);
         Jaw = rb.getText().toString();
-        String sub_jawaban = Jaw.substring(3, Jaw.length());
         for (int i = 0; i < 4; i++) {
-            if (sub_jawaban.equals(pilihan[i])) {
+            if (Jaw.equals(pilihan[i])) {
                 kode_pilihan_jawaban = kode[i];
             }
         }
@@ -132,10 +130,10 @@ public class SoalLatihanActivity extends AppCompatActivity {
         }
         Collections.shuffle(allChoice);
 
-        rb1.setText("a. " + allChoice.get(0));
-        rb2.setText("b. " + allChoice.get(1));
-        rb3.setText("c. " + allChoice.get(2));
-        rb4.setText("d. " + allChoice.get(3));
+        rb1.setText(allChoice.get(0));
+        rb2.setText(allChoice.get(1));
+        rb3.setText(allChoice.get(2));
+        rb4.setText(allChoice.get(3));
 
         mJawaban = kunjaw;
         num++;
